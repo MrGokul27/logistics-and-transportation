@@ -1,0 +1,275 @@
+<!-- ==========================================================================
+     Stackly Logistics & Transportation - Main Site Header Component
+     ========================================================================== -->
+<header id="site-header" class="site-header">
+  <!-- Top Utility Bar -->
+  <div class="site-topbar d-none d-md-block">
+    <div class="container">
+      <div class="topbar-inner">
+        <ul class="topbar-links list-unstyled mb-0">
+          <li><a href="#" class="topbar-link">Careers</a></li>
+          <li class="topbar-divider" aria-hidden="true">|</li>
+          <li class="dropdown topbar-dropdown">
+            <a
+              href="#"
+              class="topbar-link d-inline-flex align-items-center"
+              role="button"
+            >
+              <i
+                class="fa-solid fa-globe me-1 text-dark"
+                aria-hidden="true"
+              ></i>
+              <span>UK - English</span>
+              <i
+                class="fa-solid fa-chevron-down ms-1 topbar-chevron"
+                aria-hidden="true"
+              ></i>
+            </a>
+          </li>
+          <li class="topbar-divider" aria-hidden="true">|</li>
+          <li><a href="#" class="topbar-link">Login</a></li>
+          <li class="topbar-divider" aria-hidden="true">|</li>
+          <li><a href="#" class="topbar-link">Register</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <div class="site-navbar">
+    <div class="container">
+      <div class="navbar-wrapper">
+        <!-- Logo -->
+        <a href="index.html" class="navbar-brand">
+          <img
+            src="assets/images/logo-stackly.webp"
+            alt="Stackly Logistics"
+            class="site-logo"
+          />
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <nav
+          class="desktop-navigation d-none d-lg-block"
+          aria-label="Main Navigation"
+        >
+          <ul class="nav-menu list-unstyled mb-0">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link" data-page="home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="pages/about.html" class="nav-link" data-page="about"
+                >About</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="pages/services.html"
+                class="nav-link"
+                data-page="services"
+                >Services</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="pages/blog.html" class="nav-link" data-page="blog"
+                >Blogs</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="pages/contact.html" class="nav-link" data-page="contact"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Desktop Right Actions: Search + CTA -->
+        <div class="header-right-actions d-none d-lg-flex align-items-center">
+          <!-- Search Box -->
+          <div class="header-search-wrapper">
+            <form
+              action="#"
+              method="get"
+              class="header-search-form"
+              role="search"
+            >
+              <input
+                type="search"
+                class="header-search-input"
+                placeholder="Search"
+                aria-label="Search"
+                name="q"
+              />
+              <button
+                type="submit"
+                class="header-search-btn"
+                aria-label="Submit search"
+              >
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+
+          <!-- Contact CTA Button -->
+          <a href="pages/contact.html" class="btn-header-contact">
+            <span>CONTACT AXT</span>
+            <i class="fa-solid fa-chevron-right ms-2" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger Button -->
+        <button
+          type="button"
+          class="mobile-menu-toggler d-lg-none"
+          id="mobileMenuToggle"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen Mobile Navigation Drawer -->
+  <div
+    class="mobile-nav-fullscreen"
+    id="mobileNavFullscreen"
+    aria-hidden="true"
+  >
+    <div class="mobile-nav-container">
+      <!-- Mobile Top Bar with Logo & Close Button -->
+      <div class="mobile-nav-header">
+        <a href="index.html" class="navbar-brand">
+          <img
+            src="assets/images/logo-stackly.webp"
+            alt="Stackly Logistics"
+            class="site-logo"
+          />
+        </a>
+        <button
+          type="button"
+          class="mobile-close-btn"
+          id="mobileMenuClose"
+          aria-label="Close navigation"
+        >
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Search -->
+      <div class="mobile-search-wrapper">
+        <form action="#" method="get" class="mobile-search-form" role="search">
+          <input
+            type="search"
+            class="mobile-search-input"
+            placeholder="Search"
+            aria-label="Search"
+            name="q"
+          />
+          <button
+            type="submit"
+            class="mobile-search-btn"
+            aria-label="Submit search"
+          >
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Mobile Menu Links -->
+      <div class="mobile-nav-body">
+        <ul class="mobile-menu-list list-unstyled mb-0">
+          <li class="mobile-menu-item">
+            <a href="index.html" class="mobile-menu-link" data-page="home">
+              <span>Home</span>
+              <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li class="mobile-menu-item">
+            <a
+              href="pages/about.html"
+              class="mobile-menu-link"
+              data-page="about"
+            >
+              <span>About</span>
+              <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li class="mobile-menu-item">
+            <a
+              href="pages/services.html"
+              class="mobile-menu-link"
+              data-page="services"
+            >
+              <span>Services</span>
+              <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li class="mobile-menu-item">
+            <a href="pages/blog.html" class="mobile-menu-link" data-page="blog">
+              <span>Blogs</span>
+              <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li class="mobile-menu-item">
+            <a
+              href="pages/contact.html"
+              class="mobile-menu-link"
+              data-page="contact"
+            >
+              <span>Contact</span>
+              <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Mobile CTA Button -->
+        <div class="mobile-nav-cta">
+          <a
+            href="pages/contact.html"
+            class="btn-header-contact w-100 justify-content-center"
+          >
+            <span>CONTACT AXT</span>
+            <i class="fa-solid fa-chevron-right ms-2" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Utility / Auth Links -->
+        <div class="mobile-utility-section">
+          <div class="mobile-lang-select mb-3">
+            <label
+              class="form-label text-muted small mb-1 d-flex align-items-center"
+            >
+              <i class="fa-solid fa-globe me-2 text-primary-color"></i> Region &
+              Language
+            </label>
+            <select
+              class="form-select mobile-select"
+              aria-label="Select Language"
+            >
+              <option selected value="uk">UK - English</option>
+              <option value="us">US - English</option>
+              <option value="de">DE - Deutsch</option>
+              <option value="fr">FR - Français</option>
+            </select>
+          </div>
+
+          <div class="mobile-auth-grid">
+            <a href="#" class="mobile-auth-chip">
+              <i class="fa-solid fa-briefcase me-1"></i> Careers
+            </a>
+            <a href="#" class="mobile-auth-chip">
+              <i class="fa-solid fa-arrow-right-to-bracket me-1"></i> Login
+            </a>
+            <a href="#" class="mobile-auth-chip">
+              <i class="fa-solid fa-user-plus me-1"></i> Register
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

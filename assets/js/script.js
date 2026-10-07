@@ -46,6 +46,7 @@ async function loadCommonHeader() {
 async function loadCommonFooter() {
   const placeholder = document.getElementById("footer-placeholder");
   if (!placeholder) {
+    initScrollToTop();
     return;
   }
 
@@ -78,8 +79,39 @@ async function loadCommonFooter() {
     }
 
     placeholder.outerHTML = footerHtml;
+    initScrollToTop();
   } catch (err) {
     console.error("Error loading common footer component:", err);
+  }
+}
+
+// --------------------------------------------------------------------------
+// 2. Scroll To Top Interaction
+// --------------------------------------------------------------------------
+function initScrollToTop() {
+  const scrollBtn = document.getElementById("scrollToTopBtn");
+  if (!scrollBtn) return;
+
+  const handleScroll = () => {
+    if (window.scrollY > 280) {
+      scrollBtn.classList.add("is-visible");
+    } else {
+      scrollBtn.classList.remove("is-visible");
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  handleScroll();
+
+  if (!scrollBtn.dataset.bound) {
+    scrollBtn.dataset.bound = "true";
+    scrollBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
   }
 }
 
@@ -206,6 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load Common Header & Footer components
   loadCommonHeader();
   loadCommonFooter();
+  initScrollToTop();
 
   // Reveal Animations with Intersection Observer
   const animateElements = document.querySelectorAll(".fade-in-element");

@@ -239,6 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadCommonHeader();
   loadCommonFooter();
   initScrollToTop();
+  initCountUpAnimation();
 
   // Reveal Animations with Intersection Observer
   const animateElements = document.querySelectorAll(".fade-in-element");
@@ -404,6 +405,76 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// --------------------------------------------------------------------------
+// 4. Animated Number Counters
+// --------------------------------------------------------------------------
+function initCountUpAnimation() {
+  const counterElements = document.querySelectorAll(".counter-val");
+  if (!counterElements.length) return;
+
+  const animateCount = (el) => {
+    const target = parseInt(el.getAttribute("data-target"), 10);
+    if (isNaN(target)) return;
+
+    const duration = 1800; // 1.8 seconds duration
+    let startTime = null;
+
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+
+      // easeOutExpo easing curve for smooth counter slowdown at the end
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = Math.floor(easeProgress * target);
+
+      el.textContent = current.toLocaleString();
+
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        el.textContent = target.toLocaleString();
+      }
+    };
+
+    window.requestAnimationFrame(step);
+  };
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const counters = entry.target.querySelectorAll(".counter-val");
+            if (counters.length) {
+              counters.forEach((c) => animateCount(c));
+            } else if (entry.target.classList.contains("counter-val")) {
+              animateCount(entry.target);
+            }
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -40px 0px",
+      },
+    );
+
+    const statsSections = document.querySelectorAll(
+      ".about-commitment-section, .counter-section",
+    );
+    if (statsSections.length) {
+      statsSections.forEach((sec) => observer.observe(sec));
+    } else {
+      counterElements.forEach((el) => observer.observe(el));
+    }
+  } else {
+    counterElements.forEach((el) => {
+      el.textContent = el.getAttribute("data-target");
+    });
+  }
+}
 
 // Dynamic ripple keyframes injection
 const styleSheet = document.createElement("style");

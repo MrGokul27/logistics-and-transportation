@@ -190,6 +190,7 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  position: relative;
 }
 
 .navbar-brand {
@@ -208,7 +209,9 @@ p {
 
 /* Desktop Navigation */
 .desktop-navigation {
-  margin: 0 auto 0 40px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .nav-menu {
@@ -1309,8 +1312,14 @@ p {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.faq-arrow-btn svg {
+.faq-arrow-btn i {
+  font-size: 0.85rem;
   transition: transform 0.3s ease;
+}
+
+.faq-question[aria-expanded="true"] .faq-arrow-btn i,
+.faq-item.active .faq-arrow-btn i {
+  transform: rotate(45deg);
 }
 
 .faq-item:hover .faq-arrow-btn {
@@ -1513,21 +1522,38 @@ p {
 }
 
 .client-logo-item {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  gap: 10px;
   color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   transition: all 0.3s ease;
+  user-select: none;
+}
+
+.client-logo-icon {
+  font-size: 1.25rem;
+  opacity: 0.85;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.client-logo-text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 .client-logo-item:hover {
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.95);
   transform: translateY(-2px);
 }
 
-.client-logo-svg {
-  width: 140px;
-  height: 32px;
-  display: block;
+.client-logo-item:hover .client-logo-icon {
+  transform: scale(1.15);
+  color: var(--primary-color);
 }
 
 /* --------------------------------------------------------------------------
@@ -1573,6 +1599,11 @@ p {
     box-shadow 0.35s ease;
 }
 
+.process-icon-badge i {
+  font-size: 1.35rem;
+  color: #ffffff;
+}
+
 .process-step-item:hover .process-icon-badge {
   transform: scale(1.1) translateY(-3px);
   box-shadow: 0 12px 28px rgba(255, 119, 0, 0.38);
@@ -1605,8 +1636,15 @@ p {
   width: 80px;
 }
 
-.process-arrow svg {
+.process-arrow i {
+  font-size: 1.75rem;
+  color: var(--primary-color);
   display: block;
+  transition: transform 0.3s ease;
+}
+
+.process-step-item:hover + .process-arrow i {
+  transform: translateX(4px);
 }
 
 /* --------------------------------------------------------------------------

@@ -1,0 +1,1043 @@
+.about-hero-section {
+  padding: 85px 0 95px;
+  background-color: var(--bg-white, #ffffff);
+  position: relative;
+}
+
+.about-hero-content {
+  max-width: 530px;
+}
+
+.about-hero-title {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-weight: 800;
+  font-size: clamp(2.35rem, 4.2vw, 3.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--text-heading, #12161f);
+  margin-bottom: 24px;
+}
+
+.about-hero-title .highlight-orange {
+  color: #ff5e00;
+  display: block;
+}
+
+.about-hero-subheading {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: clamp(1.1rem, 1.8vw, 1.25rem);
+  font-weight: 800;
+  color: var(--text-heading, #12161f);
+  line-height: 1.4;
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+}
+
+.about-hero-description {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--text-body, #555e6d);
+  margin-bottom: 0;
+}
+
+/* Right Image Card & Badge */
+.about-hero-image-wrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px -10px rgba(18, 22, 31, 0.1);
+  background-color: #f1f3f6;
+}
+
+.about-hero-img {
+  width: 100%;
+  height: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  display: block;
+  border-radius: 20px;
+  transition: transform 0.5s ease;
+}
+
+.about-hero-image-wrapper:hover .about-hero-img {
+  transform: scale(1.02);
+}
+
+.about-fleet-badge {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #edeef0;
+  padding: 8px 18px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+  z-index: 2;
+  user-select: none;
+}
+
+.about-fleet-badge .badge-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-color, #ff7700);
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.about-fleet-badge .badge-text {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #242b38;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Our Story & Mission/Vision/Values Section
+   -------------------------------------------------------------------------- */
+.about-story-section {
+  padding: 40px 0 100px;
+  background-color: var(--bg-white, #ffffff);
+  position: relative;
+}
+
+.about-story-content {
+  max-width: 530px;
+}
+
+.section-tag-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.section-tag-line {
+  display: inline-block;
+  width: 32px;
+  height: 3.5px;
+  background-color: #ff5e00;
+  border-radius: 2px;
+}
+
+.section-tag-text {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text-heading, #12161f);
+  text-transform: uppercase;
+}
+
+.about-story-title {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-weight: 800;
+  font-size: clamp(2.1rem, 3.6vw, 2.85rem);
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  color: var(--text-heading, #12161f);
+  margin-bottom: 24px;
+}
+
+.about-story-description {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--text-body, #555e6d);
+  margin-bottom: 18px;
+}
+
+.about-story-action {
+  margin-top: 32px;
+}
+
+.btn-our-journey {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #ff5e00;
+  color: #ffffff;
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 13px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 20px -4px rgba(255, 94, 0, 0.38);
+  border: 1px solid transparent;
+}
+
+.btn-our-journey:hover {
+  background: #e65300;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px -4px rgba(255, 94, 0, 0.48);
+}
+
+.btn-our-journey i {
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.btn-our-journey:hover i {
+  transform: translateX(4px);
+}
+
+/* Story Image */
+.about-story-image-wrapper {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 18px 45px -12px rgba(18, 22, 31, 0.12);
+  background-color: #f1f3f6;
+}
+
+.about-story-img {
+  width: 100%;
+  height: 100%;
+  max-height: 460px;
+  object-fit: cover;
+  display: block;
+  border-radius: 24px;
+  transition: transform 0.5s ease;
+}
+
+.about-story-image-wrapper:hover .about-story-img {
+  transform: scale(1.02);
+}
+
+/* Mission, Vision & Values Cards */
+.about-value-card {
+  background-color: #ffffff;
+  border: 1px solid #edf0f5;
+  border-radius: 22px;
+  padding: 44px 28px 40px;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.about-value-card:hover {
+  transform: translateY(-6px);
+  border-color: #ffe0cc;
+  box-shadow: 0 20px 42px -10px rgba(18, 22, 31, 0.08);
+}
+
+.value-icon-box {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #fff4ec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: #ff5e00;
+  font-size: 1.35rem;
+  transition: all 0.35s ease;
+}
+
+.about-value-card:hover .value-icon-box {
+  transform: scale(1.1);
+  background-color: #ffe8d6;
+}
+
+.value-card-title {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-heading, #12161f);
+  margin-bottom: 14px;
+  letter-spacing: -0.015em;
+}
+
+.value-card-text {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.935rem;
+  line-height: 1.7;
+  color: var(--text-body, #555e6d);
+  margin-bottom: 0;
+  max-width: 320px;
+}
+
+.values-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.values-list .value-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.value-divider {
+  color: #ff5e00;
+  margin: 0 7px;
+  font-weight: 300;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+  .about-hero-section {
+    padding: 60px 0 60px;
+  }
+
+  .about-hero-content {
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-hero-img {
+    max-height: 420px;
+  }
+
+  .about-fleet-badge {
+    bottom: 18px;
+    left: 18px;
+    padding: 7px 14px;
+  }
+
+  .about-story-section {
+    padding: 30px 0 75px;
+  }
+
+  .about-story-content {
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-story-img {
+    max-height: 400px;
+  }
+
+  .about-value-card {
+    padding: 36px 22px 32px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .about-hero-section {
+    padding: 45px 0 45px;
+  }
+
+  .about-hero-title {
+    font-size: 2.1rem;
+    margin-bottom: 18px;
+  }
+
+  .about-hero-subheading {
+    font-size: 1.05rem;
+    margin-bottom: 14px;
+  }
+
+  .about-fleet-badge {
+    bottom: 14px;
+    left: 14px;
+    padding: 6px 12px;
+  }
+
+  .about-fleet-badge .badge-text {
+    font-size: 0.7rem;
+  }
+
+  .about-story-section {
+    padding: 20px 0 60px;
+  }
+
+  .about-story-title {
+    font-size: 1.95rem;
+    margin-bottom: 16px;
+  }
+
+  .about-value-card {
+    padding: 32px 18px 28px;
+  }
+
+  .value-card-text {
+    max-width: 100%;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Our Commitment / Numbers Counter Section
+   -------------------------------------------------------------------------- */
+.about-commitment-section {
+  background-color: #030617;
+  padding: 90px 0;
+  position: relative;
+  color: #ffffff;
+}
+
+.commitment-header {
+  max-width: 680px;
+}
+
+.commitment-header .section-tag-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.commitment-header .section-tag-line {
+  display: inline-block;
+  width: 28px;
+  height: 3px;
+  background-color: #ff5e00;
+  border-radius: 2px;
+}
+
+.commitment-header .section-tag-text {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #ff5e00;
+  text-transform: uppercase;
+}
+
+.commitment-title {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 3.8vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.commitment-subtitle {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #94a3b8;
+  margin-bottom: 0;
+}
+
+.commitment-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 48px 0 10px;
+}
+
+.commitment-stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 12px 8px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.commitment-stat-card:hover {
+  transform: translateY(-6px);
+}
+
+.commitment-stat-card .stat-icon-circle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff5e00;
+  font-size: 1.35rem;
+  margin-bottom: 22px;
+  transition: all 0.35s ease;
+}
+
+.commitment-stat-card:hover .stat-icon-circle {
+  background: rgba(255, 94, 0, 0.12);
+  border-color: rgba(255, 94, 0, 0.5);
+  color: #ff7700;
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(255, 94, 0, 0.2);
+}
+
+.commitment-stat-card .stat-number {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: clamp(2.3rem, 3.8vw, 3.25rem);
+  font-weight: 800;
+  color: #ff5e00;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.commitment-stat-card .stat-suffix {
+  margin-left: 1px;
+}
+
+.commitment-stat-card .stat-label {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.45;
+  margin: 0;
+}
+
+@media (max-width: 991.98px) {
+  .about-commitment-section {
+    padding: 70px 0;
+  }
+
+  .commitment-divider {
+    margin: 38px 0 10px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .about-commitment-section {
+    padding: 55px 0;
+  }
+
+  .commitment-title {
+    font-size: 1.95rem;
+  }
+
+  .commitment-subtitle {
+    font-size: 0.92rem;
+  }
+
+  .commitment-divider {
+    margin: 32px 0 10px;
+  }
+
+  .commitment-stat-card .stat-icon-circle {
+    width: 50px;
+    height: 50px;
+    font-size: 1.15rem;
+    margin-bottom: 16px;
+  }
+
+  .commitment-stat-card .stat-number {
+    font-size: 2.1rem;
+    margin-bottom: 8px;
+  }
+
+  .commitment-stat-card .stat-label {
+    font-size: 0.85rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Our People Section
+   -------------------------------------------------------------------------- */
+.about-people-section {
+  padding: 100px 0 60px;
+  background-color: var(--bg-white, #ffffff);
+  position: relative;
+}
+
+.about-people-content {
+  max-width: 440px;
+}
+
+.about-people-title {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-weight: 800;
+  font-size: clamp(2.1rem, 3.5vw, 2.75rem);
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  color: var(--text-heading, #12161f);
+  margin-bottom: 20px;
+}
+
+.about-people-description {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.965rem;
+  line-height: 1.75;
+  color: var(--text-body, #555e6d);
+  margin-bottom: 28px;
+}
+
+.btn-join-team {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #ff5e00;
+  color: #ffffff;
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 13px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 20px -4px rgba(255, 94, 0, 0.38);
+  border: 1px solid transparent;
+}
+
+.btn-join-team:hover {
+  background: #e65300;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px -4px rgba(255, 94, 0, 0.48);
+}
+
+.btn-join-team i {
+  font-size: 0.88rem;
+  transition: transform 0.3s ease;
+}
+
+.btn-join-team:hover i {
+  transform: translateX(4px);
+}
+
+/* Middle Image Card & Badge */
+.about-people-image-wrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px -10px rgba(18, 22, 31, 0.1);
+  background-color: #f1f3f6;
+}
+
+.about-people-img {
+  width: 100%;
+  height: 100%;
+  min-height: 330px;
+  max-height: 380px;
+  object-fit: cover;
+  display: block;
+  border-radius: 20px;
+  transition: transform 0.5s ease;
+}
+
+.about-people-image-wrapper:hover .about-people-img {
+  transform: scale(1.02);
+}
+
+.about-people-badge {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  background: rgba(18, 22, 31, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  z-index: 2;
+  user-select: none;
+}
+
+/* Right Quote Card */
+.about-quote-card {
+  background-color: #fffaf5;
+  border: 1px solid #fbe5d5;
+  border-radius: 20px;
+  padding: 44px 32px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(255, 94, 0, 0.04);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-quote-card:hover {
+  transform: translateY(-4px);
+  border-color: #fbd6be;
+  box-shadow: 0 14px 34px -8px rgba(255, 94, 0, 0.1);
+}
+
+.quote-icon {
+  color: #ff5e00;
+  font-size: 1.85rem;
+  line-height: 1;
+  margin-bottom: 22px;
+}
+
+.quote-text {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-style: italic;
+  font-weight: 800;
+  font-size: clamp(1.15rem, 1.55vw, 1.35rem);
+  line-height: 1.48;
+  color: var(--text-heading, #12161f);
+  margin-bottom: 24px;
+  padding: 0;
+}
+
+.quote-author {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #717d91;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   Why Work With Us Section
+   -------------------------------------------------------------------------- */
+.about-why-us-section {
+  padding: 60px 0 65px;
+  background-color: var(--bg-white, #ffffff);
+  position: relative;
+}
+
+.why-us-header {
+  max-width: 640px;
+  margin-bottom: 45px;
+}
+
+.why-us-title {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-weight: 800;
+  font-size: clamp(2.1rem, 3.6vw, 2.75rem);
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  color: var(--text-heading, #12161f);
+  margin-bottom: 16px;
+}
+
+.why-us-description {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.965rem;
+  line-height: 1.7;
+  color: var(--text-body, #555e6d);
+  margin-bottom: 0;
+}
+
+/* 5 Features Cards */
+.why-us-card {
+  background-color: #ffffff;
+  border: 1px solid #edf0f5;
+  border-radius: 20px;
+  padding: 38px 20px 32px;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.why-us-card:hover {
+  transform: translateY(-6px);
+  border-color: #ffe0cc;
+  box-shadow: 0 18px 40px -10px rgba(18, 22, 31, 0.08);
+}
+
+.why-us-icon-box {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background-color: #fff4ec;
+  color: #ff5e00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 22px;
+  transition: all 0.35s ease;
+}
+
+.why-us-card:hover .why-us-icon-box {
+  transform: scale(1.1);
+  background-color: #ffe8d6;
+}
+
+.why-us-card-title {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-heading, #12161f);
+  margin-bottom: 10px;
+  letter-spacing: -0.015em;
+}
+
+.why-us-card-text {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-body, #64748b);
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Partner CTA / Get a Quote Section
+   -------------------------------------------------------------------------- */
+.about-cta-section {
+  padding: 0 0 110px;
+  background-color: var(--bg-white, #ffffff);
+  position: relative;
+}
+
+.about-cta-card {
+  background-color: #ff5e00;
+  border-radius: 20px;
+  padding: 56px 60px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 45px -10px rgba(255, 94, 0, 0.3);
+}
+
+.about-cta-content {
+  max-width: 600px;
+}
+
+.about-cta-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.cta-tag-line {
+  display: inline-block;
+  width: 28px;
+  height: 3.5px;
+  background-color: #ffffff;
+  border-radius: 2px;
+}
+
+.cta-tag-text {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.about-cta-title {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-weight: 800;
+  font-size: clamp(2.1rem, 3.4vw, 2.85rem);
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin-bottom: 18px;
+}
+
+.about-cta-description {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 30px;
+  max-width: 520px;
+}
+
+.about-cta-action {
+  margin-top: 0;
+}
+
+.btn-cta-quote {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #ffffff;
+  color: #ff5e00;
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 0.95rem;
+  font-weight: 800;
+  padding: 13px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border: 1px solid transparent;
+}
+
+.btn-cta-quote:hover {
+  background: #ffffff;
+  color: #d94e00;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
+}
+
+.btn-cta-quote i {
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.btn-cta-quote:hover i {
+  transform: translateX(4px);
+}
+
+/* Image Wrapper */
+.about-cta-image-wrapper {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.about-cta-img {
+  width: 100%;
+  height: 100%;
+  max-height: 330px;
+  object-fit: cover;
+  display: block;
+  border-radius: 18px;
+  transition: transform 0.5s ease;
+}
+
+.about-cta-image-wrapper:hover .about-cta-img {
+  transform: scale(1.025);
+}
+
+/* Responsive Styles */
+@media (max-width: 991.98px) {
+  .about-people-section {
+    padding: 60px 0 35px;
+  }
+
+  .about-people-content {
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-people-img {
+    min-height: 280px;
+    max-height: 360px;
+  }
+
+  .about-quote-card {
+    padding: 34px 26px;
+    min-height: 220px;
+  }
+
+  .about-why-us-section {
+    padding: 35px 0 45px;
+  }
+
+  .why-us-header {
+    margin-bottom: 32px;
+  }
+
+  .why-us-card {
+    padding: 30px 18px 26px;
+  }
+
+  .about-cta-section {
+    padding: 0 0 75px;
+  }
+
+  .about-cta-card {
+    padding: 42px 36px;
+  }
+
+  .about-cta-content {
+    max-width: 100%;
+  }
+
+  .about-cta-img {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .about-people-section {
+    padding: 45px 0 25px;
+  }
+
+  .about-people-title {
+    font-size: 1.95rem;
+    margin-bottom: 16px;
+  }
+
+  .about-people-description {
+    font-size: 0.92rem;
+    margin-bottom: 22px;
+  }
+
+  .about-quote-card {
+    padding: 28px 20px;
+  }
+
+  .quote-text {
+    font-size: 1.15rem;
+    margin-bottom: 18px;
+  }
+
+  .about-why-us-section {
+    padding: 25px 0 35px;
+  }
+
+  .why-us-title {
+    font-size: 1.95rem;
+    margin-bottom: 14px;
+  }
+
+  .why-us-description {
+    font-size: 0.92rem;
+  }
+
+  .why-us-card {
+    padding: 26px 16px 22px;
+  }
+
+  .why-us-icon-box {
+    width: 48px;
+    height: 48px;
+    font-size: 1.15rem;
+    margin-bottom: 16px;
+  }
+
+  .why-us-card-title {
+    font-size: 1.05rem;
+  }
+
+  .about-cta-section {
+    padding: 0 0 60px;
+  }
+
+  .about-cta-card {
+    padding: 32px 20px;
+    border-radius: 18px;
+  }
+
+  .about-cta-title {
+    font-size: 1.85rem;
+    margin-bottom: 14px;
+  }
+
+  .about-cta-description {
+    font-size: 0.92rem;
+    margin-bottom: 24px;
+  }
+
+  .btn-cta-quote {
+    width: 100%;
+  }
+}

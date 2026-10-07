@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------
-// 1. Dynamic Header Component Loader
+// 1. Dynamic Header & Footer Component Loaders
 // --------------------------------------------------------------------------
 async function loadCommonHeader() {
   const placeholder = document.getElementById("header-placeholder");
@@ -40,6 +40,46 @@ async function loadCommonHeader() {
     initHeader();
   } catch (err) {
     console.error("Error loading common header component:", err);
+  }
+}
+
+async function loadCommonFooter() {
+  const placeholder = document.getElementById("footer-placeholder");
+  if (!placeholder) {
+    return;
+  }
+
+  const isInPagesDir =
+    document.querySelector('link[href*="../assets/"]') !== null ||
+    window.location.pathname.includes("/pages/") ||
+    window.location.pathname.includes("\\pages\\");
+
+  const componentPath = isInPagesDir
+    ? "components/footer.html"
+    : "pages/components/footer.html";
+
+  try {
+    const res = await fetch(componentPath);
+    if (!res.ok) {
+      throw new Error(
+        `Failed to load ${componentPath} (Status: ${res.status})`,
+      );
+    }
+    let footerHtml = await res.text();
+
+    // Adjust relative paths for pages inside the /pages/ directory
+    if (isInPagesDir) {
+      footerHtml = footerHtml.replace(
+        /href="index\.html"/g,
+        'href="../index.html"',
+      );
+      footerHtml = footerHtml.replace(/src="assets\//g, 'src="../assets/');
+      footerHtml = footerHtml.replace(/href="pages\//g, 'href="');
+    }
+
+    placeholder.outerHTML = footerHtml;
+  } catch (err) {
+    console.error("Error loading common footer component:", err);
   }
 }
 
@@ -163,8 +203,9 @@ function initHeader() {
 // 3. Page Lifecycle & Additional Animations
 // --------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
-  // Load Common Header from pages/components/header.html
+  // Load Common Header & Footer components
   loadCommonHeader();
+  loadCommonFooter();
 
   // Reveal Animations with Intersection Observer
   const animateElements = document.querySelectorAll(".fade-in-element");

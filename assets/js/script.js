@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Button Ripple Effect
   const buttonsWithRipple = document.querySelectorAll(
-    ".btn-primary, .btn-header-contact",
+    ".btn-primary, .btn-header-contact, .btn-take-step, .btn-subscribe, .btn-story-learn",
   );
   buttonsWithRipple.forEach((btn) => {
     btn.addEventListener("click", (e) => {
@@ -221,6 +221,26 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 600);
     });
   });
+
+  // Newsletter Subscribe Form Submission Feedback
+  const subscribeForm = document.getElementById("subscribeForm");
+  if (subscribeForm) {
+    subscribeForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const input = subscribeForm.querySelector(".subscribe-input");
+      const btn = subscribeForm.querySelector(".btn-subscribe");
+      if (input && input.value.trim()) {
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-check me-1"></i> Subscribed!';
+        btn.style.backgroundColor = "#16a34a";
+        input.value = "";
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.style.backgroundColor = "";
+        }, 3000);
+      }
+    });
+  }
 
   // FAQ Accordion State Management
   const faqItems = document.querySelectorAll(".faq-item");

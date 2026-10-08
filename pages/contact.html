@@ -32,6 +32,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="stylesheet" href="../assets/css/contact.css" />
   </head>
   <body>
     <!-- Common Header Component Placeholder (Loaded from pages/components/header.html) -->
@@ -39,7 +40,164 @@
 
     <!-- Page Content -->
     <main>
-      
+      <!-- Main Contact Section -->
+      <section class="contact-main-section">
+        <div class="container">
+          <div class="row align-items-start g-4 g-lg-5">
+            <!-- Left Column: Title -->
+            <div class="col-12 col-lg-6">
+              <div class="contact-main-heading-wrap">
+                <h1 class="contact-main-title">
+                  We are here to<br />help you.
+                </h1>
+              </div>
+            </div>
+
+            <!-- Right Column: Form Card -->
+            <div class="col-12 col-lg-6">
+              <div class="contact-card-wrapper">
+                <div class="contact-form-card">
+                  <!-- Submission feedback alert -->
+                  <div
+                    id="contactSuccessAlert"
+                    class="contact-alert contact-alert-success"
+                    role="alert"
+                  >
+                    <i class="fa-solid fa-circle-check me-2"></i>
+                    Thank you! Your message has been sent successfully.
+                  </div>
+
+                  <form id="contactMainForm" class="contact-form">
+                    <!-- First Name -->
+                    <div class="form-group">
+                      <label for="firstName" class="contact-label">
+                        First Name <span class="req-star">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        class="contact-input"
+                        placeholder="Your first name"
+                        maxlength="16"
+                        autocomplete="given-name"
+                        required
+                      />
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="form-group">
+                      <label for="emailAddress" class="contact-label">
+                        Email Address <span class="req-star">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        id="emailAddress"
+                        name="emailAddress"
+                        class="contact-input"
+                        placeholder="email@mail.com"
+                        autocomplete="email"
+                        required
+                      />
+                    </div>
+
+                    <!-- Subject -->
+                    <div class="form-group">
+                      <label for="subject" class="contact-label">
+                        Subject <span class="req-star">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        class="contact-input"
+                        placeholder="Add a subject"
+                        required
+                      />
+                    </div>
+
+                    <!-- Message -->
+                    <div class="form-group">
+                      <label for="message" class="contact-label">
+                        Message <span class="req-star">*</span>
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        class="contact-input contact-textarea"
+                        rows="4"
+                        placeholder="Write your message"
+                        required
+                      ></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="contact-submit-wrap">
+                      <button type="submit" class="btn-contact-submit">
+                        Send Message
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Info Section -->
+      <section class="contact-info-section">
+        <div class="container">
+          <h2 class="contact-info-title">Contact Info</h2>
+          <div class="row g-4">
+            <!-- Card 1: Call us -->
+            <div class="col-12 col-md-4">
+              <div class="contact-info-card">
+                <div class="contact-info-icon">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="contact-info-body">
+                  <h3 class="contact-info-heading">Call us</h3>
+                  <p class="contact-info-hours">Mon-Fri from 8am to 5pm.</p>
+                  <a href="#" class="contact-info-value">+91 (555)000-0000</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Email us. -->
+            <div class="col-12 col-md-4">
+              <div class="contact-info-card">
+                <div class="contact-info-icon">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="contact-info-body">
+                  <h3 class="contact-info-heading">Email us.</h3>
+                  <p class="contact-info-hours">24/7 any day</p>
+                  <a href="mailto:Stackly@gmail.com" class="contact-info-value"
+                    >Stackly@gmail.com</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: Chat support. -->
+            <div class="col-12 col-md-4">
+              <div class="contact-info-card">
+                <div class="contact-info-icon">
+                  <i class="fa-solid fa-comment-dots"></i>
+                </div>
+                <div class="contact-info-body">
+                  <h3 class="contact-info-heading">Chat support.</h3>
+                  <p class="contact-info-hours">Mon-Fri from 8am to 5pm.</p>
+                  <a href="mailto:Stackly@gmail.com" class="contact-info-value"
+                    >Stackly@gmail.com</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- Common Footer Component Placeholder (Loaded from pages/components/footer.html) -->
@@ -54,5 +212,6 @@
 
     <!-- Custom JavaScript -->
     <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/contact.js"></script>
   </body>
 </html>

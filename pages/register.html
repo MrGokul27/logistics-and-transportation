@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | Stackly Transportation and Logistics</title>
+
+    <!-- Google Fonts: Manrope & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6.7.2 CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Custom Auth Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="stylesheet" href="../assets/css/auth.css" />
+  </head>
+  <body class="auth-body">
+    <!-- Auth Main Split-Screen Container -->
+    <div class="auth-wrapper">
+      <!-- Left Hero Banner -->
+      <div class="auth-left-banner">
+        <img
+          src="../assets/images/auth-leftside-image.webp"
+          alt="TransMove - Move More. Worry Less."
+          loading="eager"
+        />
+      </div>
+
+      <!-- Right Form Container -->
+      <div class="auth-right-container">
+        <!-- Top Navigation Header -->
+        <header class="auth-top-header">
+          <!-- Back to Home Button -->
+          <a
+            href="../index.html"
+            class="btn-back-home"
+            title="Return to Home page"
+          >
+            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+            <span>Back to Home</span>
+          </a>
+
+          <!-- Top Action Links -->
+          <div class="auth-nav-group">
+            <a href="login.html" class="auth-nav-link">Login</a>
+            <a href="register.html" class="btn-top-signup">Sign up</a>
+          </div>
+        </header>
+
+        <!-- Auth Center Form Card -->
+        <main class="auth-card-body">
+          <h1 class="auth-title">Create An Account</h1>
+          <p class="auth-subtitle">
+            Discover a better way of spandings with Stackly.
+          </p>
+
+          <!-- Google Authentication Button -->
+          <button
+            type="button"
+            class="btn-google-auth"
+            aria-label="Sign up with Google"
+          >
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path
+                fill="#4285F4"
+                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+              />
+              <path
+                fill="#34A853"
+                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+              />
+              <path
+                fill="#FBBC05"
+                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
+              />
+              <path
+                fill="#EA4335"
+                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
+              />
+            </svg>
+            <span>Sign up with Google</span>
+          </button>
+
+          <!-- Divider -->
+          <div
+            class="auth-divider"
+            role="separator"
+            aria-label="or sign up with form"
+          >
+            <span>Or</span>
+          </div>
+
+          <!-- Register Form -->
+          <form id="registerForm" novalidate>
+            <!-- Form Field 1: Username (Only letters, no spaces, no numbers/special char) -->
+            <div class="auth-form-group">
+              <div class="auth-input-wrapper">
+                <i
+                  class="fa-regular fa-user auth-input-icon"
+                  aria-hidden="true"
+                ></i>
+                <input
+                  type="text"
+                  class="auth-form-control"
+                  id="registerUsername"
+                  name="username"
+                  placeholder="Type your name"
+                  required
+                  autocomplete="name"
+                  maxlength="16"
+                />
+              </div>
+              <div class="field-feedback"></div>
+            </div>
+
+            <!-- Form Field 2: Role -->
+            <div class="auth-form-group">
+              <div class="auth-input-wrapper">
+                <i
+                  class="fa-solid fa-id-badge auth-input-icon"
+                  aria-hidden="true"
+                ></i>
+                <select
+                  class="auth-form-control"
+                  id="registerRole"
+                  name="role"
+                  required
+                  aria-label="Select your role"
+                >
+                  <option value="" disabled selected>Select Role *</option>
+                  <option value="customer">Customer / Shipper</option>
+                  <option value="driver">Driver / Carrier</option>
+                  <option value="fleet_manager">Fleet Manager</option>
+                  <option value="logistics_coordinator">
+                    Logistics Coordinator
+                  </option>
+                  <option value="admin">Administrator</option>
+                </select>
+                <i
+                  class="fa-solid fa-chevron-down auth-select-arrow"
+                  aria-hidden="true"
+                ></i>
+              </div>
+              <div class="field-feedback"></div>
+            </div>
+
+            <!-- Form Field 3: Email -->
+            <div class="auth-form-group">
+              <div class="auth-input-wrapper">
+                <i
+                  class="fa-regular fa-envelope auth-input-icon"
+                  aria-hidden="true"
+                ></i>
+                <input
+                  type="email"
+                  class="auth-form-control"
+                  id="registerEmail"
+                  name="email"
+                  placeholder="Enter your Email"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+              <div class="field-feedback"></div>
+            </div>
+
+            <!-- Form Field 4: Password + Weak Password Validation -->
+            <div class="auth-form-group">
+              <div class="auth-input-wrapper">
+                <i
+                  class="fa-solid fa-lock auth-input-icon"
+                  aria-hidden="true"
+                ></i>
+                <input
+                  type="password"
+                  class="auth-form-control validate-strength"
+                  id="registerPassword"
+                  name="password"
+                  placeholder="Password"
+                  required
+                  autocomplete="new-password"
+                />
+                <button
+                  type="button"
+                  class="btn-toggle-password"
+                  data-target="registerPassword"
+                  aria-label="Toggle password visibility"
+                >
+                  <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                </button>
+              </div>
+
+              <!-- Password Strength Meter Box -->
+              <div
+                class="password-strength-box"
+                id="registerPasswordStrengthBox"
+              >
+                <div class="strength-header">
+                  <span class="strength-label">Password Strength:</span>
+                  <span class="strength-status weak">Weak</span>
+                </div>
+                <div class="strength-bars">
+                  <div class="strength-segment"></div>
+                  <div class="strength-segment"></div>
+                  <div class="strength-segment"></div>
+                  <div class="strength-segment"></div>
+                </div>
+                <ul class="strength-rules-list">
+                  <li class="strength-rule-item rule-length">
+                    <i class="fa-regular fa-circle" aria-hidden="true"></i> 8+
+                    characters
+                  </li>
+                  <li class="strength-rule-item rule-upper">
+                    <i class="fa-regular fa-circle" aria-hidden="true"></i> 1
+                    uppercase
+                  </li>
+                  <li class="strength-rule-item rule-lower">
+                    <i class="fa-regular fa-circle" aria-hidden="true"></i> 1
+                    lowercase
+                  </li>
+                  <li class="strength-rule-item rule-number">
+                    <i class="fa-regular fa-circle" aria-hidden="true"></i> 1
+                    number
+                  </li>
+                  <li class="strength-rule-item rule-special">
+                    <i class="fa-regular fa-circle" aria-hidden="true"></i> 1
+                    symbol
+                  </li>
+                </ul>
+              </div>
+              <div class="field-feedback"></div>
+            </div>
+
+            <!-- Form Field 5: Confirm Password (Matching check) -->
+            <div class="auth-form-group">
+              <div class="auth-input-wrapper">
+                <i
+                  class="fa-solid fa-lock auth-input-icon"
+                  aria-hidden="true"
+                ></i>
+                <input
+                  type="password"
+                  class="auth-form-control"
+                  id="registerConfirmPassword"
+                  name="confirmPassword"
+                  placeholder="Confirm Password"
+                  required
+                  autocomplete="new-password"
+                />
+                <button
+                  type="button"
+                  class="btn-toggle-password"
+                  data-target="registerConfirmPassword"
+                  aria-label="Toggle confirm password visibility"
+                >
+                  <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="field-feedback"></div>
+            </div>
+
+            <!-- Form Field 6: Terms and Conditions -->
+            <div class="auth-extra-row">
+              <label class="auth-checkbox-label" for="registerTerms">
+                <input
+                  type="checkbox"
+                  id="registerTerms"
+                  name="terms"
+                  required
+                />
+                <span
+                  >I agree with
+                  <a href="#" class="auth-terms-link">Terms</a> and
+                  <a href="#" class="auth-terms-link">Privacy</a></span
+                >
+              </label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn-auth-submit">
+              <span>Sign up</span>
+            </button>
+          </form>
+
+          <!-- Switch to Login -->
+          <p class="auth-switch-footer">
+            Have account?
+            <a href="login.html" class="auth-switch-link">Sign In</a>
+          </p>
+        </main>
+
+        <!-- Decorative Bottom Right Graphics Matching UI Mockup -->
+        <div class="auth-corner-graphic" aria-hidden="true">
+          <svg
+            viewBox="0 0 140 140"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M140 30L60 140H90L140 70V30Z"
+              fill="#FF7700"
+              fill-opacity="0.45"
+            />
+            <path
+              d="M140 85L100 140H125L140 118V85Z"
+              fill="#CBD5E1"
+              fill-opacity="0.75"
+            />
+            <path
+              d="M140 125L128 140H140V125Z"
+              fill="#94A3B8"
+              fill-opacity="0.5"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Auth Toast Notification Container -->
+    <div class="auth-toast-container" aria-live="polite"></div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/auth.js"></script>
+  </body>
+</html>

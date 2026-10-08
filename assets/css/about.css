@@ -801,7 +801,6 @@
 
 .about-cta-card {
   background-color: #ff5e00;
-  border-radius: 20px;
   padding: 56px 60px;
   position: relative;
   overflow: hidden;
@@ -908,7 +907,7 @@
   max-height: 330px;
   object-fit: cover;
   display: block;
-  border-radius: 18px;
+  border-radius: 12px;
   transition: transform 0.5s ease;
 }
 
@@ -1024,7 +1023,6 @@
 
   .about-cta-card {
     padding: 32px 20px;
-    border-radius: 18px;
   }
 
   .about-cta-title {

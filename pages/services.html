@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
 
@@ -32,6 +32,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="stylesheet" href="../assets/css/services.css" />
   </head>
   <body>
     <!-- Common Header Component Placeholder (Loaded from pages/components/header.html) -->
@@ -39,83 +40,475 @@
 
     <!-- Page Content -->
     <main>
-      <section class="py-5 bg-light">
-        <div class="container py-5 text-center">
-          <h1 class="display-4 fw-bold mb-3">Our Transportation Services</h1>
-          <p class="lead text-muted mx-auto" style="max-width: 680px">
-            Comprehensive logistics, freight shipping, fuel distribution, and integrated telematics designed for optimal efficiency.
-          </p>
+      <!-- Services Main Hero Section -->
+      <section class="services-hero-section">
+        <div class="container">
+          <div class="row align-items-center g-4 g-lg-5">
+            <!-- Hero Left Content -->
+            <div class="col-12 col-lg-6">
+              <div class="services-hero-content">
+                <h1 class="services-hero-title">
+                  Comprehensive<br />
+                  Transportation<br />
+                  <span class="text-orange">&amp; Logistics</span><br />
+                  <span class="text-orange">Solutions</span>
+                </h1>
+                <p class="services-hero-description">
+                  From local deliveries to nationwide distribution, we provide
+                  reliable, efficient and customized logistics solutions to keep
+                  your business moving forward.
+                </p>
+
+                <!-- Hero Features List -->
+                <div class="services-hero-features">
+                  <div class="services-feature-item">
+                    <span class="feature-icon" aria-hidden="true">
+                      <i class="fa-solid fa-shield-halved"></i>
+                    </span>
+                    <span class="feature-text">Safe</span>
+                  </div>
+
+                  <div class="services-feature-item">
+                    <span class="feature-icon" aria-hidden="true">
+                      <i class="fa-regular fa-clock"></i>
+                    </span>
+                    <span class="feature-text">On-Time</span>
+                  </div>
+
+                  <div class="services-feature-item">
+                    <span class="feature-icon" aria-hidden="true">
+                      <i class="fa-solid fa-gear"></i>
+                    </span>
+                    <span class="feature-text">Efficient</span>
+                  </div>
+
+                  <div class="services-feature-item">
+                    <span class="feature-icon" aria-hidden="true">
+                      <i class="fa-solid fa-user-group"></i>
+                    </span>
+                    <span class="feature-text">Customer Focused</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hero Right Visual -->
+            <div class="col-12 col-lg-6">
+              <div class="services-hero-visual">
+                <div class="services-visual-wrapper position-relative">
+                  <!-- Top-Right Orange Accent Graphic -->
+                  <div class="services-visual-accent">
+                    <img
+                      src="../assets/images/home/Rectangle.webp"
+                      alt="Decorative Accent"
+                      class="img-fluid"
+                      onerror="this.style.display = 'none'"
+                    />
+                  </div>
+                  <!-- Main Commercial Fleet Image -->
+                  <img
+                    src="../assets/images/home/home-hero-rightsideimage.webp"
+                    alt="Comprehensive Transportation and Logistics Fleet"
+                    class="img-fluid services-main-image"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- Services Cards -->
-      <section class="segments-section py-5">
-        <div class="container py-4">
-          <div class="row g-4 g-lg-5">
+      <!-- Services Grid Cards Section -->
+      <section class="services-grid-section">
+        <div class="container">
+          <div class="row g-4">
+            <!-- Service Card 1: Full Truck Load (FTL) -->
             <div class="col-12 col-md-6 col-lg-4">
-              <div class="segment-card">
-                <div class="segment-img-wrapper">
+              <div class="service-card fade-in-element delay-1">
+                <div class="service-card-image">
                   <img
-                    src="../assets/images/home/home-segments-we-serve-img-1.webp"
-                    alt="Carrying the Load"
-                    class="segment-img"
+                    src="../assets/images/services/services-image-1.webp"
+                    alt="Full Truck Load (FTL)"
+                    loading="lazy"
                   />
                 </div>
-                <div class="segment-content">
-                  <h3 class="segment-title">Full Truckload & LTL</h3>
-                  <p class="segment-description">
-                    Access real-time available fleet capacity across the nation with optimized routes and rapid dispatch.
+                <div class="service-card-body">
+                  <div class="service-card-header">
+                    <span class="service-card-icon" aria-hidden="true">
+                      <i class="fa-solid fa-truck"></i>
+                    </span>
+                    <h3 class="service-card-title">Full Truck Load (FTL)</h3>
+                  </div>
+                  <p class="service-card-text">
+                    Dedicated trucks for your complete cargo, ensuring faster
+                    transit, greater security and cost efficiency.
                   </p>
-                  <a href="contact.html" class="segment-link">
-                    <span>GET A QUOTE</span>
-                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                  <a href="contact.html" class="service-card-link">
+                    <span>Learn More</span>
+                    <i
+                      class="fa-solid fa-arrow-right-long"
+                      aria-hidden="true"
+                    ></i>
                   </a>
                 </div>
               </div>
             </div>
 
+            <!-- Service Card 2: Less Than Truck Load (LTL) -->
             <div class="col-12 col-md-6 col-lg-4">
-              <div class="segment-card">
-                <div class="segment-img-wrapper">
+              <div class="service-card fade-in-element delay-2">
+                <div class="service-card-image">
                   <img
-                    src="../assets/images/home/home-segments-we-serve-img-2.webp"
-                    alt="Post and Courier"
-                    class="segment-img"
+                    src="../assets/images/services/services-image-2.webp"
+                    alt="Less Than Truck Load (LTL)"
+                    loading="lazy"
                   />
                 </div>
-                <div class="segment-content">
-                  <h3 class="segment-title">Post & Courier Express</h3>
-                  <p class="segment-description">
-                    24/7 dedicated courier operations ensuring on-time express deliveries with complete end-to-end security.
+                <div class="service-card-body">
+                  <div class="service-card-header">
+                    <span class="service-card-icon" aria-hidden="true">
+                      <i class="fa-solid fa-box-open"></i>
+                    </span>
+                    <h3 class="service-card-title">
+                      Less Than Truck Load (LTL)
+                    </h3>
+                  </div>
+                  <p class="service-card-text">
+                    Flexible and affordable shipping for smaller loads, with
+                    reliable transit and real-time tracking.
                   </p>
-                  <a href="contact.html" class="segment-link">
-                    <span>GET A QUOTE</span>
-                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                  <a href="contact.html" class="service-card-link">
+                    <span>Learn More</span>
+                    <i
+                      class="fa-solid fa-arrow-right-long"
+                      aria-hidden="true"
+                    ></i>
                   </a>
                 </div>
               </div>
             </div>
 
+            <!-- Service Card 3: Warehousing & Distribution -->
             <div class="col-12 col-md-6 col-lg-4">
-              <div class="segment-card">
-                <div class="segment-img-wrapper">
+              <div class="service-card fade-in-element delay-3">
+                <div class="service-card-image">
                   <img
-                    src="../assets/images/home/home-segments-we-serve-img-3.webp"
-                    alt="Fueling Division"
-                    class="segment-img"
+                    src="../assets/images/services/services-image-3.webp"
+                    alt="Warehousing &amp; Distribution"
+                    loading="lazy"
                   />
                 </div>
-                <div class="segment-content">
-                  <h3 class="segment-title">Fleet Fueling Division</h3>
-                  <p class="segment-description">
-                    On-site commercial mobile fueling and bulk fuel logistics to keep your fleet powered without downtime.
+                <div class="service-card-body">
+                  <div class="service-card-header">
+                    <span class="service-card-icon" aria-hidden="true">
+                      <i class="fa-solid fa-warehouse"></i>
+                    </span>
+                    <h3 class="service-card-title">
+                      Warehousing &amp; Distribution
+                    </h3>
+                  </div>
+                  <p class="service-card-text">
+                    Secure storage, inventory management and multi-channel
+                    distribution to keep your supply chain running smoothly.
                   </p>
-                  <a href="contact.html" class="segment-link">
-                    <span>GET A QUOTE</span>
-                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                  <a href="contact.html" class="service-card-link">
+                    <span>Learn More</span>
+                    <i
+                      class="fa-solid fa-arrow-right-long"
+                      aria-hidden="true"
+                    ></i>
                   </a>
                 </div>
               </div>
+            </div>
+
+            <!-- Service Card 4: Expedited & Time-Sensitive Deliveries -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="service-card fade-in-element delay-1">
+                <div class="service-card-image">
+                  <img
+                    src="../assets/images/services/services-image-4.webp"
+                    alt="Expedited &amp; Time-Sensitive Deliveries"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="service-card-body">
+                  <div class="service-card-header">
+                    <span class="service-card-icon" aria-hidden="true">
+                      <i class="fa-regular fa-clock"></i>
+                    </span>
+                    <h3 class="service-card-title">
+                      Expedited &amp; Time-Sensitive Deliveries
+                    </h3>
+                  </div>
+                  <p class="service-card-text">
+                    When time matters, we deliver. Our expedited services ensure
+                    your critical shipments arrive on schedule.
+                  </p>
+                  <a href="contact.html" class="service-card-link">
+                    <span>Learn More</span>
+                    <i
+                      class="fa-solid fa-arrow-right-long"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service Card 5: Freight Forwarding -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="service-card fade-in-element delay-2">
+                <div class="service-card-image">
+                  <img
+                    src="../assets/images/services/services-image-5.webp"
+                    alt="Freight Forwarding"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="service-card-body">
+                  <div class="service-card-header">
+                    <span class="service-card-icon" aria-hidden="true">
+                      <i class="fa-solid fa-chart-line"></i>
+                    </span>
+                    <h3 class="service-card-title">Freight Forwarding</h3>
+                  </div>
+                  <p class="service-card-text">
+                    Seamless international and domestic freight forwarding with
+                    end-to-end visibility and expert handling.
+                  </p>
+                  <a href="contact.html" class="service-card-link">
+                    <span>Learn More</span>
+                    <i
+                      class="fa-solid fa-arrow-right-long"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service Card 6: Customized Logistics Solutions -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="service-card fade-in-element delay-3">
+                <div class="service-card-image">
+                  <img
+                    src="../assets/images/services/services-image-6.webp"
+                    alt="Customized Logistics Solutions"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="service-card-body">
+                  <div class="service-card-header">
+                    <span class="service-card-icon" aria-hidden="true">
+                      <i class="fa-solid fa-chart-pie"></i>
+                    </span>
+                    <h3 class="service-card-title">
+                      Customized Logistics Solutions
+                    </h3>
+                  </div>
+                  <p class="service-card-text">
+                    Tailored solutions for unique industry needs, with dedicated
+                    support and flexible options to scale with your business.
+                  </p>
+                  <a href="contact.html" class="service-card-link">
+                    <span>Learn More</span>
+                    <i
+                      class="fa-solid fa-arrow-right-long"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Choose Us Section -->
+      <section class="services-why-choose-section">
+        <div class="container">
+          <!-- Section Heading -->
+          <div class="services-section-header text-center fade-in-element">
+            <div class="section-tag-wrapper">
+              <span class="section-tag-line"></span>
+              <span class="section-tag-text">WHY CHOOSE AXT?</span>
+            </div>
+            <p class="services-section-desc">
+              We combine technology, experience and a customer-first approach to
+              deliver logistics solutions you can trust.
+            </p>
+          </div>
+
+          <!-- Features Grid (5 Items) -->
+          <div class="services-why-grid">
+            <!-- Feature 1: Safe & Secure -->
+            <div class="service-feature-box fade-in-element delay-1">
+              <div class="service-feature-icon-wrap" aria-hidden="true">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <h4 class="service-feature-title">Safe &amp; Secure</h4>
+              <p class="service-feature-desc">Your cargo is in safe hands.</p>
+            </div>
+
+            <!-- Feature 2: On-Time Delivery -->
+            <div class="service-feature-box fade-in-element delay-2">
+              <div class="service-feature-icon-wrap" aria-hidden="true">
+                <i class="fa-regular fa-clock"></i>
+              </div>
+              <h4 class="service-feature-title">On-Time Delivery</h4>
+              <p class="service-feature-desc">Because your time matters.</p>
+            </div>
+
+            <!-- Feature 3: Advanced Tracking -->
+            <div class="service-feature-box fade-in-element delay-3">
+              <div class="service-feature-icon-wrap" aria-hidden="true">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </div>
+              <h4 class="service-feature-title">Advanced Tracking</h4>
+              <p class="service-feature-desc">
+                Real-time visibility at every step.
+              </p>
+            </div>
+
+            <!-- Feature 4: Experienced Team -->
+            <div class="service-feature-box fade-in-element delay-4">
+              <div class="service-feature-icon-wrap" aria-hidden="true">
+                <i class="fa-solid fa-user-group"></i>
+              </div>
+              <h4 class="service-feature-title">Experienced Team</h4>
+              <p class="service-feature-desc">
+                Skilled professionals at every stage.
+              </p>
+            </div>
+
+            <!-- Feature 5: Customer Focus -->
+            <div class="service-feature-box fade-in-element delay-5">
+              <div class="service-feature-icon-wrap" aria-hidden="true">
+                <i class="fa-regular fa-star"></i>
+              </div>
+              <h4 class="service-feature-title">Customer Focus</h4>
+              <p class="service-feature-desc">Your success is our success.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How Our Services Work Section -->
+      <section class="">
+        <div class="container services-process-section">
+          <!-- Section Heading -->
+          <div class="services-section-header text-center fade-in-element">
+            <div class="section-tag-wrapper">
+              <span class="section-tag-line"></span>
+              <span class="section-tag-text">HOW OUR SERVICES WORK</span>
+            </div>
+            <p class="services-section-desc">
+              A simple and efficient process to get your goods where they need
+              to be.
+            </p>
+          </div>
+
+          <!-- Process Flow (5 Steps) -->
+          <div class="services-process-flow">
+            <!-- Step 1 -->
+            <div class="process-step-item fade-in-element delay-1">
+              <div class="process-icon-container">
+                <span class="process-step-badge">1</span>
+                <div class="process-icon-wrap" aria-hidden="true">
+                  <i class="fa-regular fa-comment-dots"></i>
+                </div>
+              </div>
+              <h4 class="process-step-title">Request a Quote</h4>
+              <p class="process-step-desc">
+                Tell us your requirements and get a quick quote.
+              </p>
+            </div>
+
+            <!-- Arrow Connector -->
+            <div
+              class="process-step-connector d-none d-lg-flex"
+              aria-hidden="true"
+            >
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="process-step-item fade-in-element delay-2">
+              <div class="process-icon-container">
+                <span class="process-step-badge">2</span>
+                <div class="process-icon-wrap" aria-hidden="true">
+                  <i class="fa-regular fa-copy"></i>
+                </div>
+              </div>
+              <h4 class="process-step-title">Plan &amp; Coordinate</h4>
+              <p class="process-step-desc">
+                We design the best logistics solution for you.
+              </p>
+            </div>
+
+            <!-- Arrow Connector -->
+            <div
+              class="process-step-connector d-none d-lg-flex"
+              aria-hidden="true"
+            >
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="process-step-item fade-in-element delay-3">
+              <div class="process-icon-container">
+                <span class="process-step-badge">3</span>
+                <div class="process-icon-wrap" aria-hidden="true">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+              <h4 class="process-step-title">Pick Up</h4>
+              <p class="process-step-desc">
+                Your shipment is collected on time, every time.
+              </p>
+            </div>
+
+            <!-- Arrow Connector -->
+            <div
+              class="process-step-connector d-none d-lg-flex"
+              aria-hidden="true"
+            >
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="process-step-item fade-in-element delay-4">
+              <div class="process-icon-container">
+                <span class="process-step-badge">4</span>
+                <div class="process-icon-wrap" aria-hidden="true">
+                  <i class="fa-solid fa-desktop"></i>
+                </div>
+              </div>
+              <h4 class="process-step-title">Track &amp; Monitor</h4>
+              <p class="process-step-desc">Real-time updates until delivery.</p>
+            </div>
+
+            <!-- Arrow Connector -->
+            <div
+              class="process-step-connector d-none d-lg-flex"
+              aria-hidden="true"
+            >
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="process-step-item fade-in-element delay-5">
+              <div class="process-icon-container">
+                <span class="process-step-badge">5</span>
+                <div class="process-icon-wrap" aria-hidden="true">
+                  <i class="fa-regular fa-circle-check"></i>
+                </div>
+              </div>
+              <h4 class="process-step-title">Delivery</h4>
+              <p class="process-step-desc">
+                Your goods arrive safely at the destination.
+              </p>
             </div>
           </div>
         </div>

@@ -32,6 +32,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="stylesheet" href="../assets/css/blog.css" />
   </head>
   <body>
     <!-- Common Header Component Placeholder (Loaded from pages/components/header.html) -->
@@ -39,7 +40,365 @@
 
     <!-- Page Content -->
     <main>
-      
+      <!-- Main Blog Hero Section -->
+      <section class="blog-hero-section">
+        <div class="container">
+          <div class="row align-items-center g-4 g-lg-5">
+            <!-- Left Text Content -->
+            <div class="col-12 col-lg-6">
+              <div class="blog-hero-content">
+                <h1 class="blog-hero-title">
+                  Logistics Insights &amp;<br />
+                  Industry Updates
+                </h1>
+                <p class="blog-hero-description">
+                  Explore the latest trends, tips and insights in
+                  transportation, freight, fleet management and supply chain.
+                </p>
+              </div>
+            </div>
+
+            <!-- Right Visual Graphic -->
+            <div class="col-12 col-lg-6">
+              <div class="blog-hero-visual">
+                <div class="blog-hero-visual-wrapper position-relative">
+                  <!-- Decorative Accent Element -->
+                  <div class="blog-hero-accent">
+                    <img
+                      src="../assets/images/home/Rectangle.webp"
+                      alt="Decorative Accent"
+                      class="img-fluid"
+                      onerror="this.style.display = 'none'"
+                    />
+                  </div>
+                  <!-- Main Hero Truck Fleet Image -->
+                  <img
+                    src="../assets/images/home/home-hero-rightsideimage.webp"
+                    alt="Logistics and Freight Fleet Trucks"
+                    class="img-fluid blog-hero-img"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Article Main Section -->
+      <section class="blog-featured-section">
+        <div class="container">
+          <div class="row align-items-center g-4 g-lg-5">
+            <!-- Left Featured Image -->
+            <div class="col-12 col-lg-6">
+              <div class="featured-article-image-wrapper">
+                <img
+                  src="../assets/images/blog/blog-featured-article.webp"
+                  alt="Warehouse operations and smart logistics technology"
+                  class="img-fluid featured-article-img"
+                />
+              </div>
+            </div>
+
+            <!-- Right Featured Content -->
+            <div class="col-12 col-lg-6">
+              <div class="featured-article-content">
+                <div class="featured-article-tag">
+                  <span class="tag-line" aria-hidden="true"></span>
+                  <span class="tag-text">Featured Article</span>
+                </div>
+                <h2 class="featured-article-title">
+                  <a href="#">
+                    The Future of Smart Logistics:<br />
+                    Technology Transforming<br />
+                    Transportation
+                  </a>
+                </h2>
+                <p class="featured-article-description">
+                  From GPS tracking and digital fleet management to automated
+                  logistics systems, technology is reshaping how goods move
+                  around the world.
+                </p>
+                <a href="#" class="btn-read-more">
+                  <span>Read More</span>
+                  <i
+                    class="fa-solid fa-arrow-right btn-arrow-icon"
+                    aria-hidden="true"
+                  ></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Latest Articles Section -->
+      <section class="blog-latest-section">
+        <div class="container">
+          <!-- Section Header & Filter Navigation -->
+          <div class="blog-latest-header-wrapper">
+            <div class="blog-latest-title-wrap">
+              <span class="title-line" aria-hidden="true"></span>
+              <h2 class="blog-latest-title">Latest Articles</h2>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div
+              class="blog-filter-nav"
+              role="tablist"
+              aria-label="Filter articles by category"
+            >
+              <button class="blog-filter-btn active" data-filter="all">
+                All
+              </button>
+              <button class="blog-filter-btn" data-filter="transportation">
+                Transportation
+              </button>
+              <button class="blog-filter-btn" data-filter="freight">
+                Freight
+              </button>
+              <button class="blog-filter-btn" data-filter="fleet-management">
+                Fleet Management
+              </button>
+              <button class="blog-filter-btn" data-filter="technology">
+                Technology
+              </button>
+              <button class="blog-filter-btn" data-filter="supply-chain">
+                Supply Chain
+              </button>
+            </div>
+          </div>
+
+          <!-- Articles 3-Column Grid -->
+          <div class="row g-4 g-lg-5" id="blogArticlesGrid">
+            <!-- Article 1 -->
+            <div
+              class="col-12 col-md-6 col-lg-4 article-card-col"
+              data-category="technology"
+            >
+              <article class="latest-article-card">
+                <div class="latest-article-img-wrap">
+                  <img
+                    src="../assets/images/blog/blog-latest-article-image-1.webp"
+                    alt="How Real-Time Tracking Improves Delivery Performance"
+                    class="latest-article-img"
+                  />
+                </div>
+                <div class="latest-article-body">
+                  <div class="latest-article-tag">
+                    <span class="tag-line" aria-hidden="true"></span>
+                    <span class="tag-text">Technology</span>
+                  </div>
+                  <h3 class="latest-article-title">
+                    <a href="#"
+                      >How Real-Time Tracking Improves Delivery Performance</a
+                    >
+                  </h3>
+                  <p class="latest-article-description">
+                    Real-time tracking gives better visibility, improves
+                    customer communication and ensures on-time deliveries.
+                  </p>
+                  <a href="#" class="latest-article-readmore">
+                    <span>Read More</span>
+                    <i
+                      class="fa-solid fa-arrow-right arrow-icon"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <!-- Article 2 -->
+            <div
+              class="col-12 col-md-6 col-lg-4 article-card-col"
+              data-category="freight"
+            >
+              <article class="latest-article-card">
+                <div class="latest-article-img-wrap">
+                  <img
+                    src="../assets/images/blog/blog-latest-article-image-2.webp"
+                    alt="7 Ways to Reduce Freight Transportation Costs"
+                    class="latest-article-img"
+                  />
+                </div>
+                <div class="latest-article-body">
+                  <div class="latest-article-tag">
+                    <span class="tag-line" aria-hidden="true"></span>
+                    <span class="tag-text">Freight</span>
+                  </div>
+                  <h3 class="latest-article-title">
+                    <a href="#"
+                      >7 Ways to Reduce Freight Transportation Costs</a
+                    >
+                  </h3>
+                  <p class="latest-article-description">
+                    Discover practical strategies to lower transportation costs,
+                    improve delivery performance and optimize your freight
+                    operations.
+                  </p>
+                  <a href="#" class="latest-article-readmore">
+                    <span>Read More</span>
+                    <i
+                      class="fa-solid fa-arrow-right arrow-icon"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <!-- Article 3 -->
+            <div
+              class="col-12 col-md-6 col-lg-4 article-card-col"
+              data-category="fleet-management"
+            >
+              <article class="latest-article-card">
+                <div class="latest-article-img-wrap">
+                  <img
+                    src="../assets/images/blog/blog-latest-article-image-3.webp"
+                    alt="Why Fleet Management Matters for Modern Logistics"
+                    class="latest-article-img"
+                  />
+                </div>
+                <div class="latest-article-body">
+                  <div class="latest-article-tag">
+                    <span class="tag-line" aria-hidden="true"></span>
+                    <span class="tag-text">Fleet Management</span>
+                  </div>
+                  <h3 class="latest-article-title">
+                    <a href="#"
+                      >Why Fleet Management Matters for Modern Logistics</a
+                    >
+                  </h3>
+                  <p class="latest-article-description">
+                    Effective fleet management helps you improve asset
+                    utilization, reduce downtime and keep your operations
+                    running smoothly.
+                  </p>
+                  <a href="#" class="latest-article-readmore">
+                    <span>Read More</span>
+                    <i
+                      class="fa-solid fa-arrow-right arrow-icon"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <!-- Article 4 -->
+            <div
+              class="col-12 col-md-6 col-lg-4 article-card-col"
+              data-category="supply-chain"
+            >
+              <article class="latest-article-card">
+                <div class="latest-article-img-wrap">
+                  <img
+                    src="../assets/images/blog/blog-latest-article-image-4.webp"
+                    alt="Building a Safer and More Efficient Supply Chain"
+                    class="latest-article-img"
+                  />
+                </div>
+                <div class="latest-article-body">
+                  <div class="latest-article-tag">
+                    <span class="tag-line" aria-hidden="true"></span>
+                    <span class="tag-text">Supply Chain</span>
+                  </div>
+                  <h3 class="latest-article-title">
+                    <a href="#"
+                      >Building a Safer and More Efficient Supply Chain</a
+                    >
+                  </h3>
+                  <p class="latest-article-description">
+                    A safer and more efficient supply chain reduces risks,
+                    prevents delays and creates long-term value for your
+                    business.
+                  </p>
+                  <a href="#" class="latest-article-readmore">
+                    <span>Read More</span>
+                    <i
+                      class="fa-solid fa-arrow-right arrow-icon"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <!-- Article 5 -->
+            <div
+              class="col-12 col-md-6 col-lg-4 article-card-col"
+              data-category="transportation"
+            >
+              <article class="latest-article-card">
+                <div class="latest-article-img-wrap">
+                  <img
+                    src="../assets/images/blog/blog-latest-article-image-5.webp"
+                    alt="Last-Mile Delivery: Challenges and Solutions"
+                    class="latest-article-img"
+                  />
+                </div>
+                <div class="latest-article-body">
+                  <div class="latest-article-tag">
+                    <span class="tag-line" aria-hidden="true"></span>
+                    <span class="tag-text">Delivery</span>
+                  </div>
+                  <h3 class="latest-article-title">
+                    <a href="#">Last-Mile Delivery: Challenges and Solutions</a>
+                  </h3>
+                  <p class="latest-article-description">
+                    Overcome last-mile delivery challenges with smart planning,
+                    technology and stronger logistics partnerships.
+                  </p>
+                  <a href="#" class="latest-article-readmore">
+                    <span>Read More</span>
+                    <i
+                      class="fa-solid fa-arrow-right arrow-icon"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <!-- Article 6 -->
+            <div
+              class="col-12 col-md-6 col-lg-4 article-card-col"
+              data-category="technology"
+            >
+              <article class="latest-article-card">
+                <div class="latest-article-img-wrap">
+                  <img
+                    src="../assets/images/blog/blog-latest-article-image-6.webp"
+                    alt="The Role of Technology in Modern Warehousing"
+                    class="latest-article-img"
+                  />
+                </div>
+                <div class="latest-article-body">
+                  <div class="latest-article-tag">
+                    <span class="tag-line" aria-hidden="true"></span>
+                    <span class="tag-text">Technology</span>
+                  </div>
+                  <h3 class="latest-article-title">
+                    <a href="#">The Role of Technology in Modern Warehousing</a>
+                  </h3>
+                  <p class="latest-article-description">
+                    From automation to real-time inventory tracking, technology
+                    is transforming warehousing for greater speed and accuracy.
+                  </p>
+                  <a href="#" class="latest-article-readmore">
+                    <span>Read More</span>
+                    <i
+                      class="fa-solid fa-arrow-right arrow-icon"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- Common Footer Component Placeholder (Loaded from pages/components/footer.html) -->

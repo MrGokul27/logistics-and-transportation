@@ -404,7 +404,38 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  // Initialize Blog Category Filter
+  initBlogFilter();
 });
+
+// --------------------------------------------------------------------------
+// Blog Category Filter Interaction
+// --------------------------------------------------------------------------
+function initBlogFilter() {
+  const filterBtns = document.querySelectorAll(".blog-filter-btn");
+  const articleCols = document.querySelectorAll(".article-card-col");
+  if (!filterBtns.length || !articleCols.length) return;
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filterVal = btn.getAttribute("data-filter");
+
+      articleCols.forEach((col) => {
+        const category = col.getAttribute("data-category");
+        if (filterVal === "all" || category === filterVal) {
+          col.style.display = "";
+          col.style.animation = "fadeInCard 0.35s ease forwards";
+        } else {
+          col.style.display = "none";
+        }
+      });
+    });
+  });
+}
 
 // --------------------------------------------------------------------------
 // 4. Animated Number Counters

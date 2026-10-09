@@ -406,20 +406,55 @@ function initLoginForm() {
       return;
     }
 
+    // Capture entered user data
+    const emailVal = email.value.trim();
+    const roleVal = role.value;
+    const roleTitleVal = role.options[role.selectedIndex].text;
+    const displayName = emailVal
+      .split("@")[0]
+      .replace(/[._-]/g, " ")
+      .replace(/\b\w/g, (c) => c.toUpperCase());
+
+    const now = new Date();
+    const timeFormatted =
+      now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) +
+      ", " +
+      now.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      });
+
+    const userProfile = {
+      email: emailVal,
+      role: roleVal,
+      roleTitle: roleTitleVal,
+      name: displayName,
+      loginTime: timeFormatted,
+      rememberMe: rememberMe.checked,
+    };
+
+    try {
+      localStorage.setItem("stackly_auth_user", JSON.stringify(userProfile));
+      sessionStorage.setItem("stackly_auth_user", JSON.stringify(userProfile));
+    } catch (err) {
+      console.warn("Storage write error", err);
+    }
+
     const submitBtn = form.querySelector(".btn-auth-submit");
     submitBtn.disabled = true;
     submitBtn.innerHTML =
       '<i class="fa-solid fa-spinner fa-spin"></i> Signing in...';
 
     showToast(
-      "Logged in successfully! Redirecting to home...",
+      `Welcome back, ${displayName}! Redirecting to ${roleTitleVal} dashboard...`,
       "success",
       2000,
     );
 
     setTimeout(() => {
-      window.location.href = "../index.html";
-    }, 1500);
+      window.location.href = `dashboard.html?role=${encodeURIComponent(roleVal)}&email=${encodeURIComponent(emailVal)}`;
+    }, 1200);
   });
 }
 
@@ -584,13 +619,43 @@ function initGoogleAuth() {
     btn.addEventListener("click", () => {
       showToast("Connecting with Google...", "warning", 1500);
       setTimeout(() => {
+        const userProfile = {
+          email: "alex.logistics@google.com",
+          role: "customer",
+          roleTitle: "Customer / Shipper",
+          name: "Alex Mercer",
+          loginTime:
+            new Date().toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            }) +
+            ", " +
+            new Date().toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+            }),
+          rememberMe: true,
+        };
+        try {
+          localStorage.setItem(
+            "stackly_auth_user",
+            JSON.stringify(userProfile),
+          );
+          sessionStorage.setItem(
+            "stackly_auth_user",
+            JSON.stringify(userProfile),
+          );
+        } catch (err) {}
+
         showToast(
-          "Google authentication successful! Redirecting...",
+          "Google authentication successful! Redirecting to dashboard...",
           "success",
           2000,
         );
         setTimeout(() => {
-          window.location.href = "../index.html";
+          window.location.href =
+            "dashboard.html?role=customer&email=alex.logistics@google.com";
         }, 1200);
       }, 1000);
     });

@@ -284,3 +284,304 @@
     transform: translateY(0);
   }
 }
+
+/* ==========================================================================
+   404 Helpful Actions & Quick Links Section
+   ========================================================================== */
+.error-404-helpful-section {
+  position: relative;
+  background-color: #ffffff;
+  padding: 80px 0 100px;
+}
+
+@media (max-width: 991.98px) {
+  .error-404-helpful-section {
+    padding: 50px 0 70px;
+  }
+}
+
+/* Section Header */
+.helpful-section-header {
+  max-width: 720px;
+  margin: 0 auto 46px;
+}
+
+.helpful-section-title {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: clamp(1.75rem, 3.2vw, 2.35rem);
+  font-weight: 800;
+  color: #12161f;
+  line-height: 1.25;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.helpful-section-title .title-dash {
+  display: inline-block;
+  width: 32px;
+  height: 3px;
+  background-color: var(--primary-color, #ff7700);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.helpful-section-subtitle {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: clamp(0.925rem, 1.2vw, 1.05rem);
+  color: #555e6d;
+  line-height: 1.65;
+  margin: 0 auto;
+  max-width: 580px;
+}
+
+/* Quick Navigation Cards Grid */
+.helpful-cards-row {
+  margin-bottom: 40px;
+}
+
+.helpful-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #f1f5f9;
+  border: 1px solid #f1f5f9;
+  border-radius: 16px;
+  padding: 34px 28px 28px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.helpful-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 119, 0, 0.35);
+  box-shadow: 0 16px 36px rgba(255, 119, 0, 0.09);
+}
+
+.helpful-card-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--primary-color, #ff7700);
+  font-size: 1.75rem;
+  margin-bottom: 24px;
+  transition: transform 0.3s ease;
+}
+
+.helpful-card:hover .helpful-card-icon {
+  transform: scale(1.08);
+}
+
+.helpful-card-title {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #12161f;
+  margin-bottom: 10px;
+  line-height: 1.35;
+  transition: color 0.3s ease;
+}
+
+.helpful-card:hover .helpful-card-title {
+  color: var(--primary-color, #ff7700);
+}
+
+.helpful-card-desc {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.885rem;
+  color: #64748b;
+  line-height: 1.55;
+  margin-bottom: 28px;
+  flex-grow: 1;
+}
+
+.helpful-card-arrow {
+  display: flex;
+  justify-content: flex-end;
+  color: var(--primary-color, #ff7700);
+  font-size: 1rem;
+  margin-top: auto;
+  transition: transform 0.3s ease;
+}
+
+.helpful-card:hover .helpful-card-arrow {
+  transform: translateX(5px);
+}
+
+/* ==========================================================================
+   Immediate Assistance Banner
+   ========================================================================== */
+.assistance-banner {
+  position: relative;
+  background-color: #fff6ee;
+  border: 1px solid #feddc7;
+  border-radius: 16px;
+  padding: 29px 36px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(255, 119, 0, 0.04);
+}
+
+@media (max-width: 767.98px) {
+  .assistance-banner {
+    padding: 24px 20px;
+  }
+}
+
+/* Background Truck Silhouette Watermark */
+.assistance-truck-bg {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  bottom: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.16;
+}
+
+.assistance-truck-img {
+  height: 110%;
+  max-height: 115px;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 575.98px) {
+  .assistance-truck-bg {
+    opacity: 0.1;
+    right: -20px;
+  }
+}
+
+/* Banner Content Wrapper */
+.assistance-banner-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+@media (max-width: 991.98px) {
+  .assistance-banner-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Left Info Block */
+.assistance-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (max-width: 575.98px) {
+  .assistance-info {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.assistance-icon-badge {
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color, #ff7700);
+  font-size: 1.45rem;
+  box-shadow: 0 4px 14px rgba(255, 119, 0, 0.08);
+  border: 1.5px solid rgba(255, 119, 0, 0.12);
+}
+
+.assistance-text {
+  max-width: 540px;
+}
+
+.assistance-title {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #12161f;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.assistance-desc {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.885rem;
+  color: #555e6d;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Right Action Button */
+.assistance-action {
+  flex-shrink: 0;
+}
+
+@media (max-width: 991.98px) {
+  .assistance-action {
+    width: 100%;
+    margin-top: 4px;
+  }
+}
+
+.btn-assistance-support {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--primary-color, #ff7700);
+  color: #ffffff !important;
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 13px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(255, 119, 0, 0.32);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+@media (max-width: 991.98px) {
+  .btn-assistance-support {
+    width: auto;
+  }
+}
+
+.btn-assistance-support:hover {
+  background-color: var(--primary-hover, #e06900);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(255, 119, 0, 0.42);
+  color: #ffffff !important;
+}
+
+.btn-assistance-support:active {
+  transform: translateY(0);
+  background-color: var(--primary-active, #c95e00);
+}
+
+.btn-assistance-support i {
+  transition: transform 0.3s ease;
+}
+
+.btn-assistance-support:hover i {
+  transform: translateX(4px);
+}

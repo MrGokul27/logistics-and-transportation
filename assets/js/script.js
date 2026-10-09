@@ -235,6 +235,9 @@ function initHeader() {
 // 3. Page Lifecycle & Additional Animations
 // --------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
+  // Global Empty / '#' Link Redirection to 404
+  initEmptyLinksRedirect();
+
   // Load Common Header & Footer components
   loadCommonHeader();
   loadCommonFooter();
@@ -518,3 +521,55 @@ styleSheet.innerText = `
 }
 `;
 document.head.appendChild(styleSheet);
+
+// --------------------------------------------------------------------------
+// 5. Global Redirection of Empty / '#' Links to 404 Page
+// --------------------------------------------------------------------------
+function initEmptyLinksRedirect() {
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest("a");
+    if (!link) return;
+
+    // Ignore interactive UI toggles (dropdowns, accordions, modals, tabs, scroll-to-top)
+    if (
+      link.hasAttribute("data-bs-toggle") ||
+      link.hasAttribute("data-bs-target") ||
+      link.hasAttribute("data-bs-slide") ||
+      link.classList.contains("dropdown-toggle") ||
+      link.classList.contains("carousel-control-prev") ||
+      link.classList.contains("carousel-control-next") ||
+      link.id === "scrollToTopBtn" ||
+      link.id === "mobileMenuToggle" ||
+      link.id === "mobileMenuClose"
+    ) {
+      return;
+    }
+
+    const onclickAttr = link.getAttribute("onclick");
+    if (
+      onclickAttr &&
+      (onclickAttr.includes("history.back") ||
+        onclickAttr.includes("preventDefault"))
+    ) {
+      return;
+    }
+
+    const href = link.getAttribute("href");
+    if (
+      href === null ||
+      href === "" ||
+      href === "#" ||
+      href === "#!" ||
+      href.startsWith("javascript:void") ||
+      href.startsWith("javascript:;")
+    ) {
+      e.preventDefault();
+      const isInPagesDir =
+        document.querySelector('link[href*="../assets/"]') !== null ||
+        window.location.pathname.includes("/pages/") ||
+        window.location.pathname.includes("\\pages\\");
+      const target404 = isInPagesDir ? "404.html" : "pages/404.html";
+      window.location.href = target404;
+    }
+  });
+}

@@ -1,0 +1,286 @@
+.error-404-section {
+  position: relative;
+  background-color: #ffffff;
+  padding: 80px 0 100px;
+  min-height: calc(100vh - var(--header-total-height, 114px));
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+@media (min-width: 992px) {
+  .error-404-section {
+    min-height: clamp(560px, 72vh, 760px);
+    padding: 60px 0;
+  }
+}
+
+/* Right Side Full-Bleed Fleet Image Visual */
+.error-404-bg-visual {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 58%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.error-404-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+  display: block;
+}
+
+/* Smooth Fade Overlay towards the left content */
+.error-404-fade-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 22%;
+  background: linear-gradient(
+    to right,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.95) 10%,
+    rgba(255, 255, 255, 0.6) 45%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Modern CSS Mask for smooth seamless gradient blend */
+@supports (
+  (-webkit-mask-image: linear-gradient(#000, #000)) or
+    (mask-image: linear-gradient(#000, #000))
+) {
+  .error-404-bg-img {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 12%,
+      black 28%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 12%,
+      black 28%
+    );
+  }
+}
+
+@media (max-width: 991.98px) {
+  .error-404-section {
+    padding: 40px 0 60px;
+    display: block;
+    min-height: auto;
+  }
+
+  .error-404-bg-visual {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    height: clamp(260px, 45vw, 400px);
+    margin-top: 35px;
+    display: block;
+  }
+
+  .error-404-bg-img {
+    object-position: center;
+  }
+
+  .error-404-fade-overlay {
+    width: 100%;
+    height: 35%;
+    top: 0;
+    left: 0;
+    bottom: auto;
+    background: linear-gradient(
+      to bottom,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  @supports (
+    (-webkit-mask-image: linear-gradient(#000, #000)) or
+      (mask-image: linear-gradient(#000, #000))
+  ) {
+    .error-404-bg-img {
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 18%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 18%);
+    }
+  }
+}
+
+/* Left Content Wrapper */
+.error-404-content {
+  position: relative;
+  z-index: 3;
+  padding-right: 15px;
+}
+
+@media (max-width: 991.98px) {
+  .error-404-content {
+    padding-right: 0;
+    text-align: left;
+  }
+}
+
+/* 404 Number */
+.error-404-code {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: clamp(5rem, 9.5vw, 7.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  color: var(--primary-color, #ff7700);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.03em;
+  user-select: none;
+}
+
+/* Heading */
+.error-404-title {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #12161f;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.015em;
+}
+
+/* Description paragraph */
+.error-404-description {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: clamp(1rem, 1.3vw, 1.125rem);
+  color: #555e6d;
+  line-height: 1.65;
+  max-width: 440px;
+  margin-bottom: 2.25rem;
+}
+
+/* Button Actions Container */
+.error-404-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Primary "Back to Home" Button */
+.btn-404-home {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background-color: var(--primary-color, #ff7700);
+  color: #ffffff !important;
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 14px 30px;
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  box-shadow: 0 6px 20px rgba(255, 119, 0, 0.32);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-404-home:hover {
+  background-color: var(--primary-hover, #e06900);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(255, 119, 0, 0.42);
+  color: #ffffff !important;
+}
+
+.btn-404-home:active {
+  transform: translateY(0);
+  background-color: var(--primary-active, #c95e00);
+}
+
+.btn-404-home i {
+  transition: transform 0.3s ease;
+}
+
+.btn-404-home:hover i {
+  transform: translateX(4px);
+}
+
+/* Secondary "Go Back" Button */
+.btn-404-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #ffffff;
+  color: #1e293b !important;
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 14px 26px;
+  border-radius: 8px;
+  border: 1.5px solid #d1d5db;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-404-back:hover {
+  background-color: #f8fafc;
+  border-color: #94a3b8;
+  color: #0f172a !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.btn-404-back:active {
+  transform: translateY(0);
+  background-color: #e2e8f0;
+}
+
+.btn-404-back i {
+  transition: transform 0.3s ease;
+}
+
+.btn-404-back:hover i {
+  transform: translateX(-4px);
+}
+
+/* Staggered Fade-in Animations */
+.error-404-fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: errorFadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.error-404-fade-in.delay-1 {
+  animation-delay: 0.12s;
+}
+
+.error-404-fade-in.delay-2 {
+  animation-delay: 0.24s;
+}
+
+.error-404-fade-in.delay-3 {
+  animation-delay: 0.36s;
+}
+
+@keyframes errorFadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

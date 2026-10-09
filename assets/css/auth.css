@@ -57,10 +57,7 @@ body.auth-body {
 .auth-left-banner {
   flex: 0 0 50%;
   max-width: 50%;
-  height: 100vh;
-  position: sticky;
-  top: 0;
-  left: 0;
+  position: relative;
   overflow: hidden;
   background-color: #0c121e;
 }

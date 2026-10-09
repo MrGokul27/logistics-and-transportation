@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  initEmptyLinksRedirect();
   initPasswordToggles();
   initPasswordStrength();
   initUsernameValidation();
@@ -593,5 +594,54 @@ function initGoogleAuth() {
         }, 1200);
       }, 1000);
     });
+  });
+}
+
+/* --------------------------------------------------------------------------
+   8. Global Redirection of Empty / '#' Links to 404 Page
+   -------------------------------------------------------------------------- */
+function initEmptyLinksRedirect() {
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest("a");
+    if (!link) return;
+
+    if (
+      link.hasAttribute("data-bs-toggle") ||
+      link.hasAttribute("data-bs-target") ||
+      link.hasAttribute("data-bs-slide") ||
+      link.classList.contains("dropdown-toggle") ||
+      link.id === "scrollToTopBtn" ||
+      link.id === "mobileMenuToggle" ||
+      link.id === "mobileMenuClose"
+    ) {
+      return;
+    }
+
+    const onclickAttr = link.getAttribute("onclick");
+    if (
+      onclickAttr &&
+      (onclickAttr.includes("history.back") ||
+        onclickAttr.includes("preventDefault"))
+    ) {
+      return;
+    }
+
+    const href = link.getAttribute("href");
+    if (
+      href === null ||
+      href === "" ||
+      href === "#" ||
+      href === "#!" ||
+      href.startsWith("javascript:void") ||
+      href.startsWith("javascript:;")
+    ) {
+      e.preventDefault();
+      const isInPagesDir =
+        document.querySelector('link[href*="../assets/"]') !== null ||
+        window.location.pathname.includes("/pages/") ||
+        window.location.pathname.includes("\\pages\\");
+      const target404 = isInPagesDir ? "404.html" : "pages/404.html";
+      window.location.href = target404;
+    }
   });
 }

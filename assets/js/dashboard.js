@@ -236,14 +236,6 @@ function initDashboardApp() {
   setupLogout();
   setupEmptyLinksRedirect();
   renderRoleDashboard(currentRole);
-
-  // Show welcome toast
-  setTimeout(() => {
-    showDashToast(
-      `Authenticated as ${currentUser.name} (${ROLE_CONFIGS[currentRole].name})`,
-      "success",
-    );
-  }, 400);
 }
 
 /* --------------------------------------------------------------------------
@@ -323,10 +315,6 @@ function setupRoleSelector() {
       } catch (err) {}
 
       renderRoleDashboard(currentRole);
-      showDashToast(
-        `Role switched to ${ROLE_CONFIGS[newRole].name}`,
-        "success",
-      );
     }
   });
 }
@@ -2921,35 +2909,20 @@ function calculateInstantQuote() {
 
   if (priceEl) priceEl.textContent = `$${totalPrice.toLocaleString()}.00`;
   if (baseFeeEl) baseFeeEl.textContent = `$${basePrice.toLocaleString()}.00`;
-
-  showDashToast(
-    "Live tariff updated based on multi-modal parameters",
-    "success",
-  );
 }
 
 function markDriverStopComplete(btn, stopName) {
   btn.disabled = true;
   btn.className = "btn btn-sm btn-success";
   btn.innerHTML = `<i class="fa-solid fa-circle-check me-1"></i> Arrived & Signed`;
-  showDashToast(
-    `Stop at ${stopName} marked as Arrived & Proof of Delivery logged!`,
-    "success",
-  );
 }
 
 function showConsignmentModal(id) {
-  showDashToast(
-    `Viewing full bill of lading & telematics for ${id}`,
-    "success",
-  );
+  // Consignment modal handler
 }
 
 function exportDataToast(type) {
-  showDashToast(
-    `Exporting ${type} dataset to CSV / Excel format...`,
-    "success",
-  );
+  // Export handler
 }
 
 /* --------------------------------------------------------------------------
@@ -2998,109 +2971,96 @@ function setupLogout() {
         localStorage.removeItem("stackly_auth_user");
         sessionStorage.removeItem("stackly_auth_user");
       } catch (err) {}
-
-      showDashToast("Signing out of session...", "warning");
-      setTimeout(() => {
-        window.location.href = "login.html";
-      }, 700);
+      window.location.href = "login.html";
     });
   });
 }
 
 /* --------------------------------------------------------------------------
-   9. Intercept Empty Links & Buttons -> Redirect to 404 Page (Requirement 7)
+   9. Intercept Empty Links, # Links & Buttons -> Redirect to 404 Page
+   (Except Sidebar Menus and Logout Button)
    -------------------------------------------------------------------------- */
 function setupEmptyLinksRedirect() {
-  document.addEventListener("click", (e) => {
-    const link = e.target.closest("a");
-    if (!link) return;
+  document.addEventListener(
+    "click",
+    (e) => {
+      // 1. Allow logout button to proceed with sign out
+      const logoutBtn = e.target.closest(
+        "#logoutBtn, .btn-sidebar-logout, .btn-logout",
+      );
+      if (logoutBtn) {
+        return;
+      }
 
-    // Explicitly ignore sidebar navigation links and active interactive controls
-    if (
-      link.classList.contains("sidebar-nav-link") ||
-      link.hasAttribute("data-view") ||
-      link.classList.contains("btn-sidebar-logout") ||
-      link.classList.contains("btn-logout") ||
-      link.id === "logoutBtn" ||
-      link.hasAttribute("data-bs-toggle") ||
-      link.hasAttribute("data-bs-target") ||
-      link.classList.contains("dropdown-toggle") ||
-      (link.getAttribute("role") === "button" && link.getAttribute("onclick"))
-    ) {
-      return;
-    }
+      // 2. Allow mobile drawer controls (open/close toggle and backdrop overlay)
+      const mobileCtrl = e.target.closest(
+        "#mobileSidebarToggle, #sidebarCloseBtn, #sidebarOverlay, .sidebar-toggle-btn, .sidebar-close-btn",
+      );
+      if (mobileCtrl) {
+        return;
+      }
 
-    const onclickAttr = link.getAttribute("onclick");
-    if (
-      onclickAttr &&
-      (onclickAttr.includes("switchView") ||
-        onclickAttr.includes("showDashToast") ||
-        onclickAttr.includes("exportDataToast") ||
-        onclickAttr.includes("calculateInstantQuote") ||
-        onclickAttr.includes("selectQuoteMode") ||
-        onclickAttr.includes("history.back") ||
-        onclickAttr.includes("preventDefault"))
-    ) {
-      return;
-    }
+      // 3. Allow sidebar navigation links (switch role views)
+      const sidebarLink = e.target.closest(".sidebar-nav-link");
+      if (sidebarLink) {
+        return;
+      }
 
-    const href = link.getAttribute("href");
-    if (
-      href === null ||
-      href === "" ||
-      href === "#" ||
-      href === "#!" ||
-      href.startsWith("javascript:void") ||
-      href.startsWith("javascript:;")
-    ) {
-      e.preventDefault();
-      window.location.href = "404.html";
-    }
-  });
+      // 4. Allow sidebar brand / logo link (navigates to home ../index.html)
+      const brandLink = e.target.closest(".sidebar-brand");
+      if (brandLink) {
+        return;
+      }
 
-  // Also handle buttons with data-action="empty" or empty action
-  document.addEventListener("click", (e) => {
-    const btn = e.target.closest("button");
-    if (!btn) return;
-    if (btn.getAttribute("data-action") === "empty") {
-      e.preventDefault();
-      window.location.href = "404.html";
-    }
+      // 5. Allow standard form controls for typing / selecting
+      const formControl = e.target.closest(
+        "select, input:not([type='button']):not([type='submit']), textarea, label, option",
+      );
+      if (formControl && !e.target.closest("button")) {
+        return;
+      }
+
+      // 6. Any other button clicked anywhere on the dashboard -> redirect to 404.html
+      const button = e.target.closest(
+        "button, [role='button'], input[type='button'], input[type='submit']",
+      );
+      if (button) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.location.href = "404.html";
+        return;
+      }
+
+      // 7. Any anchor link clicked
+      const link = e.target.closest("a");
+      if (link) {
+        const href = link.getAttribute("href");
+        if (
+          !href ||
+          href === "#" ||
+          href === "#!" ||
+          href.startsWith("javascript:")
+        ) {
+          e.preventDefault();
+          e.stopPropagation();
+          window.location.href = "404.html";
+          return;
+        }
+      }
+    },
+    true, // Capture phase to intercept clicks cleanly
+  );
+
+  // Form submit redirection to 404
+  document.addEventListener("submit", (e) => {
+    e.preventDefault();
+    window.location.href = "404.html";
   });
 }
 
 /* --------------------------------------------------------------------------
-   10. Toast Notification Helper
+   10. Toast Notification Helper (Disabled - No Alerts in Dashboard)
    -------------------------------------------------------------------------- */
 function showDashToast(message, type = "success", duration = 3000) {
-  let container = document.querySelector(".dash-toast-container");
-  if (!container) {
-    container = document.createElement("div");
-    container.className = "dash-toast-container";
-    document.body.appendChild(container);
-  }
-
-  const toast = document.createElement("div");
-  toast.className = `dash-toast ${type}`;
-
-  const iconClass =
-    type === "success"
-      ? "fa-solid fa-circle-check text-success"
-      : type === "warning"
-        ? "fa-solid fa-triangle-exclamation text-warning"
-        : "fa-solid fa-circle-xmark text-danger";
-
-  toast.innerHTML = `
-    <i class="${iconClass}"></i>
-    <span>${message}</span>
-  `;
-
-  container.appendChild(toast);
-
-  setTimeout(() => {
-    toast.style.opacity = "0";
-    toast.style.transform = "translateX(100%)";
-    toast.style.transition = "all 0.35s ease";
-    setTimeout(() => toast.remove(), 350);
-  }, duration);
+  // Alert messages removed as per requirement
 }

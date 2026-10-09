@@ -49,11 +49,10 @@
         <div class="sidebar-header">
           <a href="../index.html" class="sidebar-brand">
             <img
-              src="../assets/images/logo-stackly.webp"
+              src="../assets/images/logoStackly-footer.webp"
               alt="Stackly Logistics"
               class="sidebar-brand-logo"
             />
-            <span class="sidebar-brand-text">Stackly<span>.</span></span>
           </a>
           <button
             type="button"
@@ -86,16 +85,9 @@
 
         <!-- Sidebar Footer Action -->
         <div class="sidebar-footer">
-          <a
-            href="../index.html"
-            class="btn btn-sm btn-outline-light d-flex align-items-center justify-content-center gap-2"
-          >
-            <i class="fa-solid fa-house"></i>
-            <span>Back to Main Website</span>
-          </a>
           <button type="button" class="btn-sidebar-logout" id="logoutBtn">
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            <span>Sign Out Session</span>
+            <span>Sign Out</span>
           </button>
         </div>
       </aside>
@@ -149,40 +141,19 @@
             <button
               type="button"
               class="btn-topbar-action d-none d-sm-inline-flex"
-              onclick="
-                showDashToast(
-                  'Creating multi-modal consignment draft...',
-                  'success',
-                )
-              "
             >
               <i class="fa-solid fa-plus"></i>
               <span>New Dispatch</span>
             </button>
 
             <!-- Notifications Toggle -->
-            <button
-              type="button"
-              class="topbar-icon-btn"
-              title="Notifications"
-              onclick="
-                showDashToast(
-                  'All 142 fleet telemetry sensors operating nominally.',
-                  'success',
-                )
-              "
-            >
+            <button type="button" class="topbar-icon-btn" title="Notifications">
               <i class="fa-regular fa-bell"></i>
               <span class="topbar-badge-count">3</span>
             </button>
 
             <!-- User Menu -->
-            <div
-              class="topbar-user-menu"
-              onclick="
-                showDashToast('Session secured via Enterprise SSO', 'success')
-              "
-            >
+            <div class="topbar-user-menu">
               <div class="topbar-user-avatar" id="topbarUserAvatar">
                 <i class="fa-solid fa-user-shield"></i>
               </div>
@@ -204,9 +175,6 @@
         </div>
       </main>
     </div>
-
-    <!-- Toast Notification Container -->
-    <div class="dash-toast-container" aria-live="polite"></div>
 
     <!-- Bootstrap 5.3.3 JS Bundle CDN -->
     <script

@@ -295,6 +295,8 @@ body.dashboard-body {
   padding: 0.2rem 0.5rem;
   border-radius: 999px;
   font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .sidebar-badge.badge-primary {

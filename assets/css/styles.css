@@ -2126,6 +2126,60 @@ p {
 .delay-4 {
   transition-delay: 0.4s;
 }
+.delay-5 {
+  transition-delay: 0.5s;
+}
+.delay-6 {
+  transition-delay: 0.6s;
+}
+.delay-7 {
+  transition-delay: 0.7s;
+}
+.delay-8 {
+  transition-delay: 0.8s;
+}
+
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.fade-in-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.fade-in-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.fade-in-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
 
 /* --------------------------------------------------------------------------
    15. Responsive Breakpoints

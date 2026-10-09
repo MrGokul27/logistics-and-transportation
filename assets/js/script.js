@@ -80,6 +80,7 @@ async function loadCommonFooter() {
 
     placeholder.outerHTML = footerHtml;
     initScrollToTop();
+    initScrollReveal();
   } catch (err) {
     console.error("Error loading common footer component:", err);
   }
@@ -244,29 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollToTop();
   initCountUpAnimation();
 
-  // Reveal Animations with Intersection Observer
-  const animateElements = document.querySelectorAll(".fade-in-element");
-
-  if ("IntersectionObserver" in window) {
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px 0px -50px 0px",
-      threshold: 0.15,
-    };
-
-    const observer = new IntersectionObserver((entries, observerInstance) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observerInstance.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    animateElements.forEach((el) => observer.observe(el));
-  } else {
-    animateElements.forEach((el) => el.classList.add("is-visible"));
-  }
+  initScrollReveal();
 
   // Button Ripple Effect
   const buttonsWithRipple = document.querySelectorAll(
@@ -431,6 +410,7 @@ function initBlogFilter() {
         const category = col.getAttribute("data-category");
         if (filterVal === "all" || category === filterVal) {
           col.style.display = "";
+          col.classList.add("is-visible");
           col.style.animation = "fadeInCard 0.35s ease forwards";
         } else {
           col.style.display = "none";
@@ -572,4 +552,36 @@ function initEmptyLinksRedirect() {
       window.location.href = target404;
     }
   });
+}
+
+// --------------------------------------------------------------------------
+// 6. Scroll Reveal Animations (Intersection Observer)
+// --------------------------------------------------------------------------
+function initScrollReveal() {
+  const animateElements = document.querySelectorAll(
+    ".fade-in-element:not(.is-visible), .fade-in-left:not(.is-visible), .fade-in-right:not(.is-visible), .fade-in-scale:not(.is-visible)",
+  );
+
+  if (!animateElements.length) return;
+
+  if ("IntersectionObserver" in window) {
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px 0px -40px 0px",
+      threshold: 0.12,
+    };
+
+    const observer = new IntersectionObserver((entries, observerInstance) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observerInstance.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    animateElements.forEach((el) => observer.observe(el));
+  } else {
+    animateElements.forEach((el) => el.classList.add("is-visible"));
+  }
 }

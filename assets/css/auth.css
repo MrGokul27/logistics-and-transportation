@@ -53,6 +53,10 @@ body.auth-body {
   background-color: #ffffff;
 }
 
+input[type="password"]::-ms-reveal {
+  display: none;
+}
+
 /* Left Hero Banner */
 .auth-left-banner {
   flex: 0 0 50%;

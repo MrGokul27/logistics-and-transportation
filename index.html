@@ -30,10 +30,182 @@
       referrerpolicy="no-referrer"
     />
 
+    <!-- Critical Preloader Styles (Zero-FOUC) -->
+    <style>
+      body.preloader-active {
+        overflow: hidden !important;
+        height: 100vh !important;
+      }
+      #site-preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 999999;
+        background-color: #0b0f19;
+      }
+    </style>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
+    <!-- ==========================================================================
+         Theme Preloader - Logistics & Transportation Edition
+         ========================================================================== -->
+    <div
+      id="site-preloader"
+      class="site-preloader"
+      role="status"
+      aria-live="polite"
+      aria-label="Loading Stackly Logistics & Transportation"
+    >
+      <!-- Subtle Futuristic Logistics Grid & Ambient Light -->
+      <div class="preloader-bg-grid"></div>
+      <div class="preloader-glow preloader-glow-1"></div>
+      <div class="preloader-glow preloader-glow-2"></div>
+
+      <!-- Core Glassmorphic Hub -->
+      <div class="preloader-container">
+        <!-- Brand Identity -->
+        <div class="preloader-brand">
+          <img
+            src="assets/images/logoStackly-footer.webp"
+            alt="Stackly Logistics"
+            class="preloader-logo"
+          />
+          <div>
+            <span class="preloader-badge">
+              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+              Global Freight Network
+            </span>
+          </div>
+        </div>
+
+        <!-- Multi-Modal Transport Mode Badges -->
+        <div class="preloader-mode-icons" aria-label="Transport Modes">
+          <div class="mode-icon active" title="Road Freight">
+            <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
+          </div>
+          <div class="mode-icon" title="Air Cargo">
+            <i class="fa-solid fa-plane-departure" aria-hidden="true"></i>
+          </div>
+          <div class="mode-icon" title="Ocean Logistics">
+            <i class="fa-solid fa-ship" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <!-- Interactive Vector Route Animation -->
+        <div class="preloader-track-scene">
+          <svg
+            class="preloader-route-svg"
+            viewBox="0 0 360 80"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient
+                id="preloaderLineGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+              >
+                <stop offset="0%" stop-color="#ff5500" />
+                <stop offset="50%" stop-color="#ff7700" />
+                <stop offset="100%" stop-color="#ffaa33" />
+              </linearGradient>
+            </defs>
+
+            <!-- Background Dashed Track Line -->
+            <path
+              class="route-bg-line"
+              d="M 30 40 C 90 10, 150 70, 210 40 C 260 15, 300 55, 330 40"
+            />
+            <!-- Animated Active Glowing Line -->
+            <path
+              class="route-active-line"
+              id="preloader-route-path"
+              d="M 30 40 C 90 10, 150 70, 210 40 C 260 15, 300 55, 330 40"
+            />
+
+            <!-- Origin Waypoint -->
+            <circle
+              cx="30"
+              cy="40"
+              r="5"
+              class="waypoint-node waypoint-start"
+            />
+            <circle cx="30" cy="40" r="11" class="waypoint-pulse" />
+
+            <!-- Intermediate Waypoint Hub -->
+            <circle
+              cx="210"
+              cy="40"
+              r="4.5"
+              class="waypoint-node waypoint-mid"
+            />
+
+            <!-- Destination Waypoint -->
+            <circle cx="330" cy="40" r="5" class="waypoint-node waypoint-end" />
+            <circle
+              cx="330"
+              cy="40"
+              r="11"
+              class="waypoint-pulse waypoint-pulse-end"
+            />
+          </svg>
+
+          <!-- Moving Transport Carrier Truck -->
+          <div class="preloader-carrier" id="preloader-carrier">
+            <div class="carrier-icon-wrap">
+              <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
+              <span class="carrier-beacon"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Telemetry & Dynamic Progress Bar -->
+        <div class="preloader-meta">
+          <div class="preloader-progress-info">
+            <span class="preloader-status-text" id="preloader-status"
+              >Connecting Global Fleet Network...</span
+            >
+            <span class="preloader-counter" id="preloader-percentage">0%</span>
+          </div>
+
+          <div class="preloader-progress-bar-wrap">
+            <div
+              class="preloader-progress-fill"
+              id="preloader-progress-bar"
+              role="progressbar"
+              aria-valuenow="0"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              <div class="progress-flare"></div>
+            </div>
+          </div>
+
+          <!-- High-Tech Telemetry Micro Tags -->
+          <div class="preloader-telemetry">
+            <span class="telemetry-item">
+              <i class="fa-solid fa-satellite-dish" aria-hidden="true"></i> GPS
+              Live
+            </span>
+            <span class="telemetry-separator" aria-hidden="true">•</span>
+            <span class="telemetry-item">
+              <i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i> Fleet
+              Sync
+            </span>
+            <span class="telemetry-separator" aria-hidden="true">•</span>
+            <span class="telemetry-item">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              Verified 256-Bit
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Common Header Component Placeholder (Loaded from pages/components/header.html) -->
     <div id="header-placeholder"></div>
 

@@ -1,3 +1,135 @@
+let preloaderInitialized = false;
+
+function initThemePreloader() {
+  if (preloaderInitialized) return;
+  const preloader = document.getElementById("site-preloader");
+  if (!preloader) return;
+
+  preloaderInitialized = true;
+  document.body.classList.add("preloader-active");
+
+  const progressBar = document.getElementById("preloader-progress-bar");
+  const percentageEl = document.getElementById("preloader-percentage");
+  const statusEl = document.getElementById("preloader-status");
+  const carrierEl = document.getElementById("preloader-carrier");
+  const routeActiveLine = document.getElementById("preloader-route-path");
+  const modeIcons = document.querySelectorAll(
+    ".preloader-mode-icons .mode-icon",
+  );
+
+  const DURATION = 2000; // 2.0 Seconds
+  const startTime = performance.now();
+
+  let pathLength = 0;
+  if (routeActiveLine) {
+    try {
+      pathLength = routeActiveLine.getTotalLength();
+      routeActiveLine.style.strokeDasharray = `${pathLength} ${pathLength}`;
+      routeActiveLine.style.strokeDashoffset = `${pathLength}`;
+    } catch (e) {
+      pathLength = 320;
+    }
+  }
+
+  const statusMessages = [
+    { threshold: 0, text: "Connecting Global Fleet Network...", modeIndex: 0 },
+    { threshold: 30, text: "Routing Freight Corridors...", modeIndex: 0 },
+    {
+      threshold: 55,
+      text: "Synchronizing Multi-Modal Telemetry...",
+      modeIndex: 1,
+    },
+    { threshold: 80, text: "Calibrating Live Supply Chain...", modeIndex: 2 },
+    {
+      threshold: 96,
+      text: "Dispatch Ready. Launching Experience...",
+      modeIndex: 0,
+    },
+  ];
+
+  let lastModeIndex = -1;
+
+  function updatePreloader(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / DURATION, 1);
+
+    // Smooth cubic ease out curve
+    const easeProgress = 1 - Math.pow(1 - progress, 3);
+    const percent = Math.min(Math.round(easeProgress * 100), 100);
+
+    if (percentageEl) {
+      percentageEl.textContent = `${percent}%`;
+    }
+
+    if (progressBar) {
+      progressBar.style.width = `${percent}%`;
+    }
+
+    if (routeActiveLine && pathLength > 0) {
+      const offset = pathLength * (1 - easeProgress);
+      routeActiveLine.style.strokeDashoffset = `${offset}`;
+    }
+
+    if (carrierEl) {
+      const minX = 8;
+      const maxX = 92;
+      const carrierPos = minX + (maxX - minX) * easeProgress;
+      carrierEl.style.left = `${carrierPos}%`;
+    }
+
+    for (let i = statusMessages.length - 1; i >= 0; i--) {
+      if (percent >= statusMessages[i].threshold) {
+        if (statusEl && statusEl.textContent !== statusMessages[i].text) {
+          statusEl.textContent = statusMessages[i].text;
+        }
+        if (modeIcons.length && statusMessages[i].modeIndex !== lastModeIndex) {
+          lastModeIndex = statusMessages[i].modeIndex;
+          modeIcons.forEach((icon, idx) => {
+            icon.classList.toggle("active", idx === lastModeIndex);
+          });
+        }
+        break;
+      }
+    }
+
+    if (progress < 1) {
+      requestAnimationFrame(updatePreloader);
+    } else {
+      finishPreloader();
+    }
+  }
+
+  function finishPreloader() {
+    if (percentageEl) percentageEl.textContent = "100%";
+    if (progressBar) progressBar.style.width = "100%";
+    if (routeActiveLine && pathLength > 0)
+      routeActiveLine.style.strokeDashoffset = "0";
+    if (carrierEl) carrierEl.style.left = "92%";
+    if (statusEl)
+      statusEl.textContent = "Dispatch Ready. Launching Experience...";
+
+    setTimeout(() => {
+      preloader.classList.add("is-loaded");
+      document.body.classList.remove("preloader-active");
+      document.body.classList.add("preloader-complete");
+
+      setTimeout(() => {
+        preloader.style.display = "none";
+        if (typeof initScrollReveal === "function") {
+          initScrollReveal();
+        }
+      }, 700);
+    }, 150);
+  }
+
+  requestAnimationFrame(updatePreloader);
+}
+
+// Auto-run if element is in DOM already
+if (document.getElementById("site-preloader")) {
+  initThemePreloader();
+}
+
 // --------------------------------------------------------------------------
 // 1. Dynamic Header & Footer Component Loaders
 // --------------------------------------------------------------------------
@@ -236,6 +368,9 @@ function initHeader() {
 // 3. Page Lifecycle & Additional Animations
 // --------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
+  // Theme Preloader Initialization
+  initThemePreloader();
+
   // Global Empty / '#' Link Redirection to 404
   initEmptyLinksRedirect();
 

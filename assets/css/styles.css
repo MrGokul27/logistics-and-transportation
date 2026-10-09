@@ -3030,3 +3030,508 @@ p {
     font-size: 1rem;
   }
 }
+
+/* ==========================================================================
+   Theme Preloader - Logistics & Transportation Edition
+   ========================================================================== */
+body.preloader-active {
+  overflow: hidden !important;
+  height: 100vh !important;
+}
+
+.site-preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0b0f19;
+  background-image: radial-gradient(
+    circle at 50% 25%,
+    rgba(255, 119, 0, 0.16) 0%,
+    rgba(17, 24, 39, 0.94) 60%,
+    #080c14 100%
+  );
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.65s;
+  will-change: opacity, transform, visibility;
+}
+
+.site-preloader.is-loaded {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+/* Futuristic Logistics Grid Background */
+.preloader-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-size: 44px 44px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  mask-image: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 0) 80%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 0) 80%
+  );
+  pointer-events: none;
+}
+
+.preloader-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.preloader-glow-1 {
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 220px;
+  background: rgba(255, 119, 0, 0.18);
+  animation: preloaderPulseGlow 3s ease-in-out infinite alternate;
+}
+
+.preloader-glow-2 {
+  bottom: 15%;
+  right: 25%;
+  width: 260px;
+  height: 200px;
+  background: rgba(255, 140, 38, 0.1);
+}
+
+@keyframes preloaderPulseGlow {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 1;
+  }
+}
+
+/* Glassmorphic Preloader Core Card */
+.preloader-container {
+  position: relative;
+  z-index: 10;
+  max-width: 520px;
+  width: 92%;
+  background: rgba(18, 25, 41, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 119, 0, 0.28);
+  border-radius: 24px;
+  padding: 38px 40px 34px;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.55),
+    0 0 45px rgba(255, 119, 0, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  text-align: center;
+  overflow: hidden;
+  animation: preloaderCardEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes preloaderCardEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Card Top Glowing Border Accent */
+.preloader-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #ff7700,
+    #ffaa33,
+    transparent
+  );
+  box-shadow: 0 0 12px #ff7700;
+}
+
+/* Brand Area */
+.preloader-brand {
+  margin-bottom: 24px;
+}
+
+.preloader-logo {
+  max-height: 44px;
+  width: auto;
+  filter: drop-shadow(0 6px 14px rgba(255, 119, 0, 0.28));
+  transition: transform 0.3s ease;
+}
+
+.preloader-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 12px;
+  padding: 5px 14px;
+  background: rgba(255, 119, 0, 0.12);
+  border: 1px solid rgba(255, 119, 0, 0.3);
+  border-radius: 999px;
+  color: #ff9d42;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.preloader-badge i {
+  color: #ff7700;
+  font-size: 0.8rem;
+}
+
+/* Multi-Modal Mode Selectors */
+.preloader-mode-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.preloader-mode-icons .mode-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #8a99ad;
+  font-size: 1rem;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.preloader-mode-icons .mode-icon.active {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 119, 0, 0.3) 0%,
+    rgba(255, 140, 38, 0.15) 100%
+  );
+  border-color: #ff7700;
+  color: #ff9f47;
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 6px 18px rgba(255, 119, 0, 0.35);
+}
+
+/* Animated Interactive Track Scene */
+.preloader-track-scene {
+  position: relative;
+  width: 100%;
+  height: 86px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader-route-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.route-bg-line {
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-dasharray: 6 6;
+}
+
+.route-active-line {
+  stroke: url(#preloaderLineGradient);
+  stroke-width: 4;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 6px rgba(255, 119, 0, 0.75));
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+.waypoint-node {
+  fill: #121826;
+  stroke: #ff7700;
+  stroke-width: 3;
+}
+
+.waypoint-node.waypoint-start {
+  fill: #ff7700;
+}
+
+.waypoint-node.waypoint-end {
+  stroke: #ffaa33;
+  fill: #ff7700;
+}
+
+.waypoint-pulse {
+  fill: transparent;
+  stroke: #ff7700;
+  stroke-width: 1.5;
+  opacity: 0.6;
+  animation: waypointRadar 2s infinite ease-out;
+  transform-origin: 30px 40px;
+}
+
+.waypoint-pulse-end {
+  stroke: #ffaa33;
+  animation: waypointRadar 2s infinite ease-out 1s;
+  transform-origin: 330px 40px;
+}
+
+@keyframes waypointRadar {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* Moving Carrier Truck on Route */
+.preloader-carrier {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  transform: translate(-50%, -50%);
+  transition: left 0.1s linear;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.carrier-icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff8c1a 0%, #e06200 100%);
+  border: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.05rem;
+  box-shadow:
+    0 4px 16px rgba(255, 119, 0, 0.7),
+    0 0 24px rgba(255, 119, 0, 0.45);
+  position: relative;
+  animation: carrierEngine 0.6s infinite alternate ease-in-out;
+}
+
+@keyframes carrierEngine {
+  0% {
+    transform: translateY(-1px);
+  }
+  100% {
+    transform: translateY(1px);
+  }
+}
+
+.carrier-beacon {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  background: #00ff88;
+  border-radius: 50%;
+  border: 1.5px solid #121826;
+  box-shadow: 0 0 8px #00ff88;
+  animation: beaconFlash 0.8s infinite alternate ease-in-out;
+}
+
+@keyframes beaconFlash {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Progress Section */
+.preloader-meta {
+  width: 100%;
+}
+
+.preloader-progress-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.preloader-status-text {
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  text-align: left;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.preloader-counter {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ff851a;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 14px rgba(255, 119, 0, 0.5);
+  min-width: 52px;
+  text-align: right;
+}
+
+.preloader-progress-bar-wrap {
+  width: 100%;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.preloader-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff6a00 0%, #ff9433 50%, #ffba66 100%);
+  border-radius: 999px;
+  position: relative;
+  transition: width 0.08s linear;
+  box-shadow: 0 0 14px rgba(255, 119, 0, 0.8);
+}
+
+.progress-flare {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 30px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+  animation: flareShimmer 1.2s infinite;
+}
+
+@keyframes flareShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Micro-Telemetry Chips */
+.preloader-telemetry {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  color: #7d8b9e;
+  font-weight: 500;
+}
+
+.telemetry-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.telemetry-item i {
+  color: #ff851a;
+  font-size: 0.75rem;
+}
+
+.telemetry-separator {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 0.6rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
+  .preloader-container {
+    padding: 30px 22px 26px;
+    border-radius: 20px;
+  }
+  .preloader-logo {
+    max-height: 38px;
+  }
+  .preloader-track-scene {
+    height: 70px;
+    margin-bottom: 15px;
+  }
+  .carrier-icon-wrap {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+  .preloader-status-text {
+    font-size: 0.78rem;
+    max-width: 190px;
+  }
+  .preloader-counter {
+    font-size: 1.1rem;
+  }
+  .preloader-telemetry {
+    font-size: 0.7rem;
+    gap: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-preloader {
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s;
+  }
+  .preloader-glow-1,
+  .carrier-icon-wrap,
+  .waypoint-pulse {
+    animation: none !important;
+  }
+}

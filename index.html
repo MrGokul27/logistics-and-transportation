@@ -36,6 +36,14 @@
         overflow: hidden !important;
         height: 100vh !important;
       }
+      body.preloader-active .fade-in-element,
+      body.preloader-active .fade-in-left,
+      body.preloader-active .fade-in-right,
+      body.preloader-active .fade-in-scale {
+        opacity: 0 !important;
+        pointer-events: none;
+        transition: none !important;
+      }
       #site-preloader {
         position: fixed;
         inset: 0;
@@ -47,7 +55,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
-  <body>
+  <body class="preloader-active">
     <!-- ==========================================================================
          Theme Preloader - Logistics & Transportation Edition
          ========================================================================== -->

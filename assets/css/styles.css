@@ -2100,6 +2100,16 @@ p {
 /* --------------------------------------------------------------------------
    14. Animations & Interaction States
    -------------------------------------------------------------------------- */
+/* While preloader is active, prevent premature animations */
+body.preloader-active .fade-in-element,
+body.preloader-active .fade-in-left,
+body.preloader-active .fade-in-right,
+body.preloader-active .fade-in-scale {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: none !important;
+}
+
 .fade-in-element {
   opacity: 0;
   transform: translateY(24px);

@@ -113,11 +113,15 @@ function initThemePreloader() {
       document.body.classList.remove("preloader-active");
       document.body.classList.add("preloader-complete");
 
+      // Trigger scroll reveal animations as the preloader unveils the hero section
       setTimeout(() => {
-        preloader.style.display = "none";
         if (typeof initScrollReveal === "function") {
           initScrollReveal();
         }
+      }, 100);
+
+      setTimeout(() => {
+        preloader.style.display = "none";
       }, 700);
     }, 150);
   }
@@ -693,6 +697,12 @@ function initEmptyLinksRedirect() {
 // 6. Scroll Reveal Animations (Intersection Observer)
 // --------------------------------------------------------------------------
 function initScrollReveal() {
+  // If preloader is active or hasn't finished, postpone revealing elements until preloader completes
+  const preloader = document.getElementById("site-preloader");
+  if (preloader && !document.body.classList.contains("preloader-complete")) {
+    return;
+  }
+
   const animateElements = document.querySelectorAll(
     ".fade-in-element:not(.is-visible), .fade-in-left:not(.is-visible), .fade-in-right:not(.is-visible), .fade-in-scale:not(.is-visible)",
   );

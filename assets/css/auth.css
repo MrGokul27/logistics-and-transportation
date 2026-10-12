@@ -724,10 +724,17 @@ select.auth-form-control {
   }
 
   .auth-left-banner {
-    flex: 0 0 280px;
+    flex: none;
     max-width: 100%;
-    height: 280px;
+    height: auto;
     position: relative;
+    order: 1;
+  }
+
+  .auth-left-banner img {
+    height: auto;
+    object-fit: contain;
+    object-position: center;
   }
 
   .auth-right-container {
@@ -735,6 +742,7 @@ select.auth-form-control {
     max-width: 100%;
     min-height: auto;
     padding: 30px 24px 40px;
+    order: -1;
   }
 
   .auth-card-body {
@@ -744,7 +752,7 @@ select.auth-form-control {
 
 @media (max-width: 575.98px) {
   .auth-left-banner {
-    height: 220px;
+    height: auto;
   }
 
   .auth-right-container {

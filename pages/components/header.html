@@ -95,8 +95,10 @@
               class="header-search-form"
               role="search"
             >
+              <label for="headerSearchInput" class="visually-hidden">Search</label>
               <input
                 type="search"
+                id="headerSearchInput"
                 class="header-search-input"
                 placeholder="Search"
                 aria-label="Search"
@@ -164,8 +166,10 @@
       <!-- Mobile Search -->
       <div class="mobile-search-wrapper">
         <form action="#" method="get" class="mobile-search-form" role="search">
+          <label for="mobileSearchInput" class="visually-hidden">Search</label>
           <input
             type="search"
+            id="mobileSearchInput"
             class="mobile-search-input"
             placeholder="Search"
             aria-label="Search"
@@ -243,12 +247,15 @@
         <div class="mobile-utility-section">
           <div class="mobile-lang-select mb-3">
             <label
+              for="mobileLanguageSelect"
               class="form-label text-muted small mb-1 d-flex align-items-center"
             >
               <i class="fa-solid fa-globe me-2 text-primary-color"></i> Region &
               Language
             </label>
             <select
+              id="mobileLanguageSelect"
+              name="language"
               class="form-select mobile-select"
               aria-label="Select Language"
             >

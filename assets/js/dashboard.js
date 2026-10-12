@@ -704,10 +704,12 @@ function getCustomerView(viewId) {
           <div class="dash-toolbar">
             <div class="dash-search-input-group">
               <i class="fa-solid fa-magnifying-glass"></i>
-              <input type="text" class="dash-search-input" id="tableFilterInput" placeholder="Filter by Tracking ID, origin, destination..." />
+              <label for="tableFilterInput" class="visually-hidden">Filter Consignments</label>
+              <input type="text" class="dash-search-input" id="tableFilterInput" name="tableFilter" placeholder="Filter by Tracking ID, origin, destination..." />
             </div>
             <div class="d-flex gap-2">
-              <select class="dash-filter-select" id="modeFilterSelect">
+              <label for="modeFilterSelect" class="visually-hidden">Filter Transport Mode</label>
+              <select class="dash-filter-select" id="modeFilterSelect" name="modeFilter">
                 <option value="all">All Modes (Ocean, Road, Air)</option>
                 <option value="ocean">Ocean FCL/LCL</option>
                 <option value="road">Road Freight</option>
@@ -794,9 +796,9 @@ function getCustomerView(viewId) {
             </div>
             <div class="dash-card-body">
               <div class="mb-3">
-                <label class="form-label fw-bold small text-muted">Tracking Code / Container Number</label>
+                <label for="radarTrackingInput" class="form-label fw-bold small text-muted">Tracking Code / Container Number</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" value="AXT-99482-SEA" id="radarTrackingInput" />
+                  <input type="text" class="form-control" value="AXT-99482-SEA" id="radarTrackingInput" name="radarTracking" />
                   <button class="btn btn-primary" onclick="showDashToast('Synchronizing live GPS telemetry...', 'success')"><i class="fa-solid fa-satellite-dish me-1"></i> Locate</button>
                 </div>
               </div>
@@ -920,8 +922,8 @@ function getCustomerView(viewId) {
 
             <div class="row g-3 mb-3">
               <div class="col-md-6">
-                <label class="form-label fw-bold small text-muted">Origin Port / Hub</label>
-                <select class="form-select" id="quoteOrigin">
+                <label for="quoteOrigin" class="form-label fw-bold small text-muted">Origin Port / Hub</label>
+                <select class="form-select" id="quoteOrigin" name="origin">
                   <option value="rotterdam">Port of Rotterdam (NLD)</option>
                   <option value="frankfurt">Frankfurt CargoCity (DEU)</option>
                   <option value="singapore">Port of Singapore (SGP)</option>
@@ -930,8 +932,8 @@ function getCustomerView(viewId) {
                 </select>
               </div>
               <div class="col-md-6">
-                <label class="form-label fw-bold small text-muted">Destination Port / Hub</label>
-                <select class="form-select" id="quoteDest">
+                <label for="quoteDest" class="form-label fw-bold small text-muted">Destination Port / Hub</label>
+                <select class="form-select" id="quoteDest" name="destination">
                   <option value="newark">Port of Newark / NY (USA)</option>
                   <option value="chicago">Chicago O'Hare Freight (USA)</option>
                   <option value="losangeles">Port of Los Angeles (USA)</option>
@@ -943,12 +945,12 @@ function getCustomerView(viewId) {
 
             <div class="row g-3 mb-4">
               <div class="col-md-6">
-                <label class="form-label fw-bold small text-muted">Gross Cargo Weight (KG)</label>
-                <input type="number" class="form-control" id="quoteWeight" value="12500" min="100" />
+                <label for="quoteWeight" class="form-label fw-bold small text-muted">Gross Cargo Weight (KG)</label>
+                <input type="number" class="form-control" id="quoteWeight" name="weight" value="12500" min="100" />
               </div>
               <div class="col-md-6">
-                <label class="form-label fw-bold small text-muted">Cargo Type</label>
-                <select class="form-select" id="quoteCargoType">
+                <label for="quoteCargoType" class="form-label fw-bold small text-muted">Cargo Type</label>
+                <select class="form-select" id="quoteCargoType" name="cargoType">
                   <option value="general">General Dry Freight (Standard)</option>
                   <option value="reefer">Reefer Temperature Controlled (+15%)</option>
                   <option value="hazmat">Hazmat / Dangerous Goods Class 3 (+25%)</option>
@@ -1065,12 +1067,12 @@ function getCustomerView(viewId) {
             <div class="dash-card-body">
               <form onsubmit="event.preventDefault(); showDashToast('Support Ticket #TKT-8901 filed with Priority Desk!', 'success'); this.reset();">
                 <div class="mb-3">
-                  <label class="form-label fw-bold small text-muted">Related Waybill / Consignment ID</label>
-                  <input type="text" class="form-control" placeholder="e.g. AXT-99482-SEA" required />
+                  <label for="supportWaybillId" class="form-label fw-bold small text-muted">Related Waybill / Consignment ID</label>
+                  <input type="text" class="form-control" id="supportWaybillId" name="waybillId" placeholder="e.g. AXT-99482-SEA" required />
                 </div>
                 <div class="mb-3">
-                  <label class="form-label fw-bold small text-muted">Inquiry Category</label>
-                  <select class="form-select" required>
+                  <label for="supportCategory" class="form-label fw-bold small text-muted">Inquiry Category</label>
+                  <select class="form-select" id="supportCategory" name="category" required>
                     <option value="">Select Category...</option>
                     <option value="tracking">Live ETA Update & Radar Clarification</option>
                     <option value="customs">Customs Clearance & HS Tariff Code</option>
@@ -1079,8 +1081,8 @@ function getCustomerView(viewId) {
                   </select>
                 </div>
                 <div class="mb-3">
-                  <label class="form-label fw-bold small text-muted">Detailed Description</label>
-                  <textarea class="form-control" rows="4" placeholder="Provide details regarding your freight request..." required></textarea>
+                  <label for="supportDescription" class="form-label fw-bold small text-muted">Detailed Description</label>
+                  <textarea class="form-control" id="supportDescription" name="description" rows="4" placeholder="Provide details regarding your freight request..." required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary fw-bold"><i class="fa-solid fa-paper-plane me-1"></i> Submit Support Request</button>
               </form>
@@ -1447,15 +1449,15 @@ function getDriverView(viewId) {
               <div class="p-3 bg-light rounded-3 border h-100">
                 <h5 class="fw-bold fs-6 mb-3 text-dark"><i class="fa-solid fa-car-battery text-primary me-2"></i> Engine & Powertrain</h5>
                 <div class="form-check mb-2">
-                  <input class="form-check-input" type="checkbox" checked id="dvir1" />
+                  <input class="form-check-input" type="checkbox" checked id="dvir1" name="dvir1" />
                   <label class="form-check-label small" for="dvir1">Engine Oil Level & Pressure OK</label>
                 </div>
                 <div class="form-check mb-2">
-                  <input class="form-check-input" type="checkbox" checked id="dvir2" />
+                  <input class="form-check-input" type="checkbox" checked id="dvir2" name="dvir2" />
                   <label class="form-check-label small" for="dvir2">Coolant & Radiator Hoses</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" checked id="dvir3" />
+                  <input class="form-check-input" type="checkbox" checked id="dvir3" name="dvir3" />
                   <label class="form-check-label small" for="dvir3">Battery Terminals & Alternator</label>
                 </div>
               </div>
@@ -1465,15 +1467,15 @@ function getDriverView(viewId) {
               <div class="p-3 bg-light rounded-3 border h-100">
                 <h5 class="fw-bold fs-6 mb-3 text-dark"><i class="fa-solid fa-shield-halved text-primary me-2"></i> Brakes & Air System</h5>
                 <div class="form-check mb-2">
-                  <input class="form-check-input" type="checkbox" checked id="dvir4" />
+                  <input class="form-check-input" type="checkbox" checked id="dvir4" name="dvir4" />
                   <label class="form-check-label small" for="dvir4">Service Brakes & Parking Brake</label>
                 </div>
                 <div class="form-check mb-2">
-                  <input class="form-check-input" type="checkbox" checked id="dvir5" />
+                  <input class="form-check-input" type="checkbox" checked id="dvir5" name="dvir5" />
                   <label class="form-check-label small" for="dvir5">Air Compressor (120 PSI Hold)</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" checked id="dvir6" />
+                  <input class="form-check-input" type="checkbox" checked id="dvir6" name="dvir6" />
                   <label class="form-check-label small" for="dvir6">Gladhands & Air Lines Leak Test</label>
                 </div>
               </div>
@@ -1483,15 +1485,15 @@ function getDriverView(viewId) {
               <div class="p-3 bg-light rounded-3 border h-100">
                 <h5 class="fw-bold fs-6 mb-3 text-dark"><i class="fa-solid fa-circle-dot text-primary me-2"></i> Tires & Coupling</h5>
                 <div class="form-check mb-2">
-                  <input class="form-check-input" type="checkbox" checked id="dvir7" />
+                  <input class="form-check-input" type="checkbox" checked id="dvir7" name="dvir7" />
                   <label class="form-check-label small" for="dvir7">Steer & Drive Tires Tread Depth</label>
                 </div>
                 <div class="form-check mb-2">
-                  <input class="form-check-input" type="checkbox" checked id="dvir8" />
+                  <input class="form-check-input" type="checkbox" checked id="dvir8" name="dvir8" />
                   <label class="form-check-label small" for="dvir8">Fifth Wheel Kingpin Locked</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" checked id="dvir9" />
+                  <input class="form-check-input" type="checkbox" checked id="dvir9" name="dvir9" />
                   <label class="form-check-label small" for="dvir9">Emergency Flares & Fire Extinguisher</label>
                 </div>
               </div>
@@ -1821,17 +1823,20 @@ function getFleetManagerView(viewId) {
           <div class="dash-toolbar">
             <div class="dash-search-input-group">
               <i class="fa-solid fa-magnifying-glass"></i>
-              <input type="text" class="dash-search-input" id="fleetRegistrySearch" placeholder="Search by Unit ID, VIN, Make, Plate, or Assigned Driver..." />
+              <label for="fleetRegistrySearch" class="visually-hidden">Search Fleet Vehicles</label>
+              <input type="text" class="dash-search-input" id="fleetRegistrySearch" name="fleetRegistrySearch" placeholder="Search by Unit ID, VIN, Make, Plate, or Assigned Driver..." />
             </div>
             <div class="d-flex gap-2 flex-wrap">
-              <select class="dash-filter-select" id="fleetTypeFilter">
+              <label for="fleetTypeFilter" class="visually-hidden">Filter Vehicle Type</label>
+              <select class="dash-filter-select" id="fleetTypeFilter" name="fleetType">
                 <option value="all">All Vehicle Types (Tractor, Reefer, EV, Straight)</option>
                 <option value="tractor">Class 8 Linehaul Tractors</option>
                 <option value="reefer">Temperature-Controlled Reefer Units</option>
                 <option value="electric">Electric Commercial Semis</option>
                 <option value="intermodal">Chassis & Intermodal Rigs</option>
               </select>
-              <select class="dash-filter-select" id="fleetStatusFilter">
+              <label for="fleetStatusFilter" class="visually-hidden">Filter Vehicle Status</label>
+              <select class="dash-filter-select" id="fleetStatusFilter" name="fleetStatus">
                 <option value="all">All Operational Statuses</option>
                 <option value="active">Active On-Road (128)</option>
                 <option value="staged">Staged / Ready at Terminal (10)</option>
@@ -3107,10 +3112,12 @@ function getAdminView(viewId) {
           <div class="dash-toolbar">
             <div class="dash-search-input-group">
               <i class="fa-solid fa-magnifying-glass"></i>
-              <input type="text" class="dash-search-input" id="adminUserDirectorySearch" placeholder="Search users by name, email, department, or location..." />
+              <label for="adminUserDirectorySearch" class="visually-hidden">Search Users</label>
+              <input type="text" class="dash-search-input" id="adminUserDirectorySearch" name="userSearch" placeholder="Search users by name, email, department, or location..." />
             </div>
             <div class="d-flex gap-2 flex-wrap">
-              <select class="dash-filter-select" id="adminRoleFilter">
+              <label for="adminRoleFilter" class="visually-hidden">Filter Role</label>
+              <select class="dash-filter-select" id="adminRoleFilter" name="roleFilter">
                 <option value="all">All Roles (Customer, Driver, Fleet, Coordinator, Admin)</option>
                 <option value="admin">Administrator / Command HQ</option>
                 <option value="logistics_coordinator">Logistics Coordinator</option>
@@ -3118,7 +3125,8 @@ function getAdminView(viewId) {
                 <option value="driver">Driver / Carrier</option>
                 <option value="customer">Customer / Shipper</option>
               </select>
-              <select class="dash-filter-select" id="adminStatusFilter">
+              <label for="adminStatusFilter" class="visually-hidden">Filter Account Status</label>
+              <select class="dash-filter-select" id="adminStatusFilter" name="statusFilter">
                 <option value="all">All Account Statuses</option>
                 <option value="active">Active & Verified</option>
                 <option value="on_duty">On Duty</option>

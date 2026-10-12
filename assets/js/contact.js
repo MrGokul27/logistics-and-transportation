@@ -100,32 +100,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ------------------------------------------------------------------------
-  // Form submission handler
+  // Form submission handler: Redirect to 404 page
   // ------------------------------------------------------------------------
   if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
-
-      const submitBtn = contactForm.querySelector(".btn-contact-submit");
-      const alertBox = document.getElementById("contactSuccessAlert");
-
-      if (submitBtn) {
-        const originalText = submitBtn.textContent;
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Sending...";
-
-        setTimeout(() => {
-          submitBtn.disabled = false;
-          submitBtn.textContent = originalText;
-          if (alertBox) {
-            alertBox.classList.add("show");
-            setTimeout(() => {
-              alertBox.classList.remove("show");
-            }, 6000);
-          }
-          contactForm.reset();
-        }, 600);
-      }
+      window.location.href = "404.html";
     });
   }
 });

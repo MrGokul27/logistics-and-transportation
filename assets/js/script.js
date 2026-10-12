@@ -418,23 +418,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Newsletter Subscribe Form Submission Feedback
+  // Newsletter Subscribe Form Submission Redirect to 404
   const subscribeForm = document.getElementById("subscribeForm");
   if (subscribeForm) {
     subscribeForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const input = subscribeForm.querySelector(".subscribe-input");
-      const btn = subscribeForm.querySelector(".btn-subscribe");
-      if (input && input.value.trim()) {
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<i class="fa-solid fa-check me-1"></i> Subscribed!';
-        btn.style.backgroundColor = "#16a34a";
-        input.value = "";
-        setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.style.backgroundColor = "";
-        }, 3000);
-      }
+      const isInPagesDir =
+        document.querySelector('link[href*="../assets/"]') !== null ||
+        window.location.pathname.includes("/pages/") ||
+        window.location.pathname.includes("\\pages\\");
+      const target404 = isInPagesDir ? "404.html" : "pages/404.html";
+      window.location.href = target404;
     });
   }
 

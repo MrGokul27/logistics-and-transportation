@@ -220,17 +220,20 @@
             </div>
 
             <!-- Form Field 4: Remember Me & Forgot Password -->
-            <div class="auth-extra-row">
-              <label class="auth-checkbox-label" for="loginRememberMe">
-                <input
-                  type="checkbox"
-                  id="loginRememberMe"
-                  name="rememberMe"
-                  required
-                />
-                <span>Remember Me</span>
-              </label>
-              <a href="#" class="auth-forgot-link">Forgot Password?</a>
+            <div class="auth-extra-group">
+              <div class="auth-extra-row">
+                <label class="auth-checkbox-label" for="loginRememberMe">
+                  <input
+                    type="checkbox"
+                    id="loginRememberMe"
+                    name="rememberMe"
+                    required
+                  />
+                  <span>Remember Me <span class="required-star">*</span></span>
+                </label>
+                <a href="#" class="auth-forgot-link">Forgot Password?</a>
+              </div>
+              <div class="field-feedback" id="rememberMeFeedback"></div>
             </div>
 
             <!-- Submit Button -->

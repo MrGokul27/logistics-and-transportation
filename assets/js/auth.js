@@ -348,6 +348,15 @@ function initLoginForm() {
   const form = document.getElementById("loginForm");
   if (!form) return;
 
+  const rememberMeInput = document.getElementById("loginRememberMe");
+  if (rememberMeInput) {
+    rememberMeInput.addEventListener("change", () => {
+      if (rememberMeInput.checked) {
+        hideFieldError(rememberMeInput);
+      }
+    });
+  }
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -399,6 +408,14 @@ function initLoginForm() {
         password.classList.add("is-valid");
         hideFieldError(password);
       }
+    }
+
+    // Validate Remember Me (Required field)
+    if (!rememberMe || !rememberMe.checked) {
+      showFieldError(rememberMe, "Please check 'Remember Me' to continue.");
+      isValid = false;
+    } else {
+      hideFieldError(rememberMe);
     }
 
     if (!isValid) {
@@ -588,7 +605,11 @@ function initRegisterForm() {
 }
 
 function showFieldError(element, msg) {
-  const parent = element.closest(".auth-form-group");
+  if (!element) return;
+  const parent =
+    element.closest(".auth-form-group") ||
+    element.closest(".auth-extra-group") ||
+    element.closest(".auth-extra-row");
   if (!parent) return;
   let feedback = parent.querySelector(".field-feedback");
   if (!feedback) {
@@ -602,7 +623,11 @@ function showFieldError(element, msg) {
 }
 
 function hideFieldError(element) {
-  const parent = element.closest(".auth-form-group");
+  if (!element) return;
+  const parent =
+    element.closest(".auth-form-group") ||
+    element.closest(".auth-extra-group") ||
+    element.closest(".auth-extra-row");
   if (!parent) return;
   const feedback = parent.querySelector(".field-feedback");
   if (feedback && feedback.classList.contains("error")) {

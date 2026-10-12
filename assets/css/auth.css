@@ -516,12 +516,26 @@ select.auth-form-control {
 /* --------------------------------------------------------------------------
    Extra Form Controls (Remember Me, Forgot Password, Terms)
    -------------------------------------------------------------------------- */
+.auth-extra-group {
+  margin: 18px 0 22px;
+}
+
+.auth-extra-group .auth-extra-row {
+  margin: 0 0 6px;
+}
+
 .auth-extra-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 18px 0 22px;
   font-size: 13.5px;
+}
+
+.required-star {
+  color: var(--auth-danger);
+  font-weight: 700;
+  margin-left: 2px;
 }
 
 .auth-checkbox-label {

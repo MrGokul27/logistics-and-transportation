@@ -272,20 +272,24 @@
             </div>
 
             <!-- Form Field 6: Terms and Conditions -->
-            <div class="auth-extra-row">
-              <label class="auth-checkbox-label" for="registerTerms">
-                <input
-                  type="checkbox"
-                  id="registerTerms"
-                  name="terms"
-                  required
-                />
-                <span
-                  >I agree with
-                  <a href="#" class="auth-terms-link">Terms</a> and
-                  <a href="#" class="auth-terms-link">Privacy</a></span
-                >
-              </label>
+            <div class="auth-extra-group">
+              <div class="auth-extra-row">
+                <label class="auth-checkbox-label" for="registerTerms">
+                  <input
+                    type="checkbox"
+                    id="registerTerms"
+                    name="terms"
+                    required
+                  />
+                  <span
+                    >I agree with
+                    <a href="#" class="auth-terms-link">Terms</a> and
+                    <a href="#" class="auth-terms-link">Privacy</a>
+                    <span class="required-star">*</span></span
+                  >
+                </label>
+              </div>
+              <div class="field-feedback" id="registerTermsFeedback"></div>
             </div>
 
             <!-- Submit Button -->

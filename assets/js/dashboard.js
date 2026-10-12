@@ -548,7 +548,7 @@ function getCustomerView(viewId) {
 
       <!-- Main Live Shipment Table & Quick Actions -->
       <div class="row g-4">
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-xl-8">
           <div class="dash-card">
             <div class="dash-card-header">
               <h2 class="dash-card-title"><i class="fa-solid fa-list-check"></i> Active Consignment Pipeline</h2>
@@ -645,7 +645,7 @@ function getCustomerView(viewId) {
           </div>
         </div>
 
-        <div class="col-12 col-lg-4">
+        <div class="col-12 col-xl-4">
           <div class="dash-card">
             <div class="dash-card-header">
               <h2 class="dash-card-title"><i class="fa-solid fa-bolt"></i> Quick Freight Actions</h2>
@@ -1200,7 +1200,7 @@ function getDriverView(viewId) {
 
       <!-- Live Route Checklist & DVIR Quick Status -->
       <div class="row g-4">
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-xl-8">
           <div class="dash-card">
             <div class="dash-card-header">
               <h2 class="dash-card-title"><i class="fa-solid fa-list-check"></i> Today's Delivery Manifest & Stop Actions</h2>
@@ -1260,7 +1260,7 @@ function getDriverView(viewId) {
           </div>
         </div>
 
-        <div class="col-12 col-lg-4">
+        <div class="col-12 col-xl-4">
           <div class="dash-card">
             <div class="dash-card-header">
               <h2 class="dash-card-title"><i class="fa-solid fa-shield-halved"></i> Vehicle Health & Safety</h2>
@@ -1771,13 +1771,256 @@ function getFleetManagerView(viewId) {
   }
 
   if (viewId === "fleet-registry") {
-    return getFleetManagerView("fleet-overview");
+    return `
+      <!-- Fleet Registry Header & Asset Overview -->
+      <div class="dash-card mb-4">
+        <div class="dash-card-header">
+          <div>
+            <h2 class="dash-card-title"><i class="fa-solid fa-truck-fast"></i> Vehicle Fleet Asset Registry & Specifications</h2>
+            <p class="text-muted small mb-0 mt-1">Complete commercial vehicle registry, powertrain telemetry, registration lifecycle, and maintenance compliance across 142 enterprise assets.</p>
+          </div>
+          <div class="dash-card-actions">
+            <button class="btn btn-sm btn-primary" onclick="showDashToast('New Vehicle Asset Onboarding form opened', 'success')"><i class="fa-solid fa-plus me-1"></i> Add Vehicle Asset</button>
+            <button class="btn btn-sm btn-outline-secondary" onclick="exportDataToast('fleet-registry')"><i class="fa-solid fa-download me-1"></i> Export Asset Spec Sheet</button>
+          </div>
+        </div>
+        <div class="dash-card-body">
+          <!-- Summary Metrics Cards -->
+          <div class="row g-3 mb-4">
+            <div class="col-6 col-md-3">
+              <div class="p-3 bg-light rounded-3 border">
+                <span class="text-muted small fw-bold">TOTAL REGISTERED FLEET</span>
+                <h3 class="font-heading text-dark my-1">142 Units</h3>
+                <span class="text-success small fw-bold"><i class="fa-solid fa-circle-check me-1"></i> 100% DOT Certified</span>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="p-3 bg-light rounded-3 border">
+                <span class="text-muted small fw-bold">FLEET ASSET VALUE</span>
+                <h3 class="font-heading text-dark my-1">$24.85M</h3>
+                <span class="text-primary small fw-bold">Commercial Insured</span>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="p-3 bg-light rounded-3 border">
+                <span class="text-muted small fw-bold">AVG ASSET AGE</span>
+                <h3 class="font-heading text-dark my-1">2.4 Years</h3>
+                <span class="text-info small fw-bold">Euro VI / EPA Tier 4</span>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="p-3 bg-light rounded-3 border">
+                <span class="text-muted small fw-bold">CLEAN ENERGY / EV FLEET</span>
+                <h3 class="font-heading text-dark my-1">18 Units</h3>
+                <span class="text-success small fw-bold">12.6% Zero-Emission</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filter Toolbar -->
+          <div class="dash-toolbar">
+            <div class="dash-search-input-group">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" class="dash-search-input" id="fleetRegistrySearch" placeholder="Search by Unit ID, VIN, Make, Plate, or Assigned Driver..." />
+            </div>
+            <div class="d-flex gap-2 flex-wrap">
+              <select class="dash-filter-select" id="fleetTypeFilter">
+                <option value="all">All Vehicle Types (Tractor, Reefer, EV, Straight)</option>
+                <option value="tractor">Class 8 Linehaul Tractors</option>
+                <option value="reefer">Temperature-Controlled Reefer Units</option>
+                <option value="electric">Electric Commercial Semis</option>
+                <option value="intermodal">Chassis & Intermodal Rigs</option>
+              </select>
+              <select class="dash-filter-select" id="fleetStatusFilter">
+                <option value="all">All Operational Statuses</option>
+                <option value="active">Active On-Road (128)</option>
+                <option value="staged">Staged / Ready at Terminal (10)</option>
+                <option value="maintenance">In Workshop Maintenance (4)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Comprehensive Vehicle Registry Table -->
+          <div class="table-responsive">
+            <table class="table dash-table table-hover align-middle" id="fleetRegistryTable">
+              <thead>
+                <tr>
+                  <th>Asset ID & Plate</th>
+                  <th>Make, Model & Year</th>
+                  <th>Powertrain & Fuel Type</th>
+                  <th>Assigned Base Hub</th>
+                  <th>Current Driver & Status</th>
+                  <th>Odometer & Service Due</th>
+                  <th class="text-nowrap text-end">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="dash-table-primary-text">TRK-104</span>
+                    <span class="dash-table-subtext">Plate: IL-9942-TX • VIN: 4V4NC9EH8MN81042</span>
+                  </td>
+                  <td>
+                    <span class="fw-bold">2025 Volvo FH16 Globetrotter</span>
+                    <span class="dash-table-subtext">Class 8 Heavy Duty Tractor</span>
+                  </td>
+                  <td>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle"><i class="fa-solid fa-gas-pump me-1"></i> Turbo-Compound Diesel (750 HP)</span>
+                  </td>
+                  <td>Chicago Intermodal Gateway Hub</td>
+                  <td>
+                    <span class="dash-table-primary-text">Marcus Vance (CDL-A)</span>
+                    <span class="status-badge delivered"><i class="fa-solid fa-circle-check me-1"></i> Active On-Road</span>
+                  </td>
+                  <td>
+                    <span class="fw-bold">142,850 mi</span>
+                    <span class="dash-table-subtext">Next service in 8,150 mi</span>
+                  </td>
+                  <td class="text-nowrap text-end">
+                    <button class="btn btn-sm btn-outline-primary me-1" title="Vehicle Telematics" onclick="switchView('fleet-telematics')"><i class="fa-solid fa-satellite-dish"></i></button>
+                    <button class="btn btn-sm btn-outline-secondary" title="Service History" onclick="switchView('fleet-maintenance')"><i class="fa-solid fa-wrench"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="dash-table-primary-text">TRK-112</span>
+                    <span class="dash-table-subtext">Plate: OH-7712-CV • VIN: 1FUJBBCK4DL88219</span>
+                  </td>
+                  <td>
+                    <span class="fw-bold">2024 Freightliner Cascadia Aero</span>
+                    <span class="dash-table-subtext">Class 8 Sleeper Cab</span>
+                  </td>
+                  <td>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle"><i class="fa-solid fa-gas-pump me-1"></i> Detroit DD15 Clean Diesel</span>
+                  </td>
+                  <td>Cleveland East Rail Terminal</td>
+                  <td>
+                    <span class="dash-table-primary-text">Sarah Jenkins (CDL-A)</span>
+                    <span class="status-badge delivered"><i class="fa-solid fa-circle-check me-1"></i> Active On-Road</span>
+                  </td>
+                  <td>
+                    <span class="fw-bold">98,420 mi</span>
+                    <span class="dash-table-subtext">Next service in 14,200 mi</span>
+                  </td>
+                  <td class="text-nowrap text-end">
+                    <button class="btn btn-sm btn-outline-primary me-1" title="Vehicle Telematics" onclick="switchView('fleet-telematics')"><i class="fa-solid fa-satellite-dish"></i></button>
+                    <button class="btn btn-sm btn-outline-secondary" title="Service History" onclick="switchView('fleet-maintenance')"><i class="fa-solid fa-wrench"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="dash-table-primary-text">TRK-128</span>
+                    <span class="dash-table-subtext">Plate: NL-BX-892 • VIN: YS2R6X2000201948</span>
+                  </td>
+                  <td>
+                    <span class="fw-bold">2023 Scania R500 V8 Streamline</span>
+                    <span class="dash-table-subtext">Heavy Haul Longline</span>
+                  </td>
+                  <td>
+                    <span class="badge bg-warning-subtle text-warning border border-warning-subtle"><i class="fa-solid fa-oil-can me-1"></i> Euro VI-D Biodiesel Compatible</span>
+                  </td>
+                  <td>Rotterdam Europort Logistics Depot</td>
+                  <td>
+                    <span class="dash-table-primary-text">Hans Gruber (EU-C+E)</span>
+                    <span class="status-badge maintenance"><i class="fa-solid fa-wrench me-1"></i> Workshop Maintenance</span>
+                  </td>
+                  <td>
+                    <span class="fw-bold">210,400 mi</span>
+                    <span class="text-danger small fw-bold">Service Due Now (Bay 2)</span>
+                  </td>
+                  <td class="text-nowrap text-end">
+                    <button class="btn btn-sm btn-warning" title="View Work Order" onclick="switchView('fleet-maintenance')"><i class="fa-solid fa-screwdriver-wrench me-1"></i> View WO</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="dash-table-primary-text">EV-201</span>
+                    <span class="dash-table-subtext">Plate: CA-4491-EV • VIN: 7G2EE38N8PA00124</span>
+                  </td>
+                  <td>
+                    <span class="fw-bold">2025 Tesla Semi Long Range</span>
+                    <span class="dash-table-subtext">Class 8 Zero-Emission Electric</span>
+                  </td>
+                  <td>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle"><i class="fa-solid fa-bolt me-1"></i> Battery Electric (500mi Range)</span>
+                  </td>
+                  <td>Dallas Fort Worth Regional Gateway</td>
+                  <td>
+                    <span class="dash-table-primary-text">Carlos Mendez (CDL-A)</span>
+                    <span class="status-badge delivered"><i class="fa-solid fa-circle-check me-1"></i> Active On-Road</span>
+                  </td>
+                  <td>
+                    <span class="fw-bold">34,180 mi</span>
+                    <span class="dash-table-subtext">Battery SOH: 99.2% Nominal</span>
+                  </td>
+                  <td class="text-nowrap text-end">
+                    <button class="btn btn-sm btn-outline-primary me-1" title="Vehicle Telematics" onclick="switchView('fleet-telematics')"><i class="fa-solid fa-satellite-dish"></i></button>
+                    <button class="btn btn-sm btn-outline-secondary" title="Service History" onclick="switchView('fleet-maintenance')"><i class="fa-solid fa-wrench"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="dash-table-primary-text">TRK-139</span>
+                    <span class="dash-table-subtext">Plate: TX-8841-KW • VIN: 1NKDX4EX0JJ33912</span>
+                  </td>
+                  <td>
+                    <span class="fw-bold">2024 Kenworth T680 NextGen</span>
+                    <span class="dash-table-subtext">Class 8 EPA SmartWay Certified</span>
+                  </td>
+                  <td>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle"><i class="fa-solid fa-gas-pump me-1"></i> PACCAR MX-13 Clean Diesel</span>
+                  </td>
+                  <td>Dallas Fort Worth Regional Gateway</td>
+                  <td>
+                    <span class="dash-table-primary-text">David Chen (CDL-A)</span>
+                    <span class="status-badge delivered"><i class="fa-solid fa-circle-check me-1"></i> Active On-Road</span>
+                  </td>
+                  <td>
+                    <span class="fw-bold">64,120 mi</span>
+                    <span class="dash-table-subtext">Next service in 11,800 mi</span>
+                  </td>
+                  <td class="text-nowrap text-end">
+                    <button class="btn btn-sm btn-outline-primary me-1" title="Vehicle Telematics" onclick="switchView('fleet-telematics')"><i class="fa-solid fa-satellite-dish"></i></button>
+                    <button class="btn btn-sm btn-outline-secondary" title="Service History" onclick="switchView('fleet-maintenance')"><i class="fa-solid fa-wrench"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="dash-table-primary-text">TRK-142</span>
+                    <span class="dash-table-subtext">Plate: GA-2210-VN • VIN: 4V4NC9EH2LN99014</span>
+                  </td>
+                  <td>
+                    <span class="fw-bold">2024 Volvo VNL 860 High-Roof</span>
+                    <span class="dash-table-subtext">Class 8 Long-Haul Reefer Spec</span>
+                  </td>
+                  <td>
+                    <span class="badge bg-info-subtle text-info border border-info-subtle"><i class="fa-solid fa-snowflake me-1"></i> Reefer Dedicated + Carrier Vector</span>
+                  </td>
+                  <td>Atlanta Hub Transshipment Depot</td>
+                  <td>
+                    <span class="dash-table-primary-text">Staged / Unassigned</span>
+                    <span class="status-badge in-transit"><i class="fa-solid fa-clock me-1"></i> Ready at Gate 08</span>
+                  </td>
+                  <td>
+                    <span class="fw-bold">52,300 mi</span>
+                    <span class="dash-table-subtext">Next service in 17,700 mi</span>
+                  </td>
+                  <td class="text-nowrap text-end">
+                    <button class="btn btn-sm btn-primary" onclick="showDashToast('Assigning Driver to TRK-142...', 'success')"><i class="fa-solid fa-user-plus me-1"></i> Assign</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    `;
   }
 
   if (viewId === "fleet-telematics") {
     return `
       <div class="row g-4">
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-xl-8">
           <div class="dash-card">
             <div class="dash-card-header">
               <h2 class="dash-card-title"><i class="fa-solid fa-satellite-dish"></i> Live Fleet GPS & Geofence Matrix</h2>
@@ -1814,7 +2057,7 @@ function getFleetManagerView(viewId) {
           </div>
         </div>
 
-        <div class="col-12 col-lg-4">
+        <div class="col-12 col-xl-4">
           <div class="dash-card">
             <div class="dash-card-header">
               <h2 class="dash-card-title"><i class="fa-solid fa-bell"></i> Geofence & Sensor Events</h2>
@@ -2175,7 +2418,208 @@ function getCoordinatorView(viewId) {
   }
 
   if (viewId === "coordinator-dispatch") {
-    return getCoordinatorView("coordinator-overview");
+    return `
+      <!-- Load Planning & Multi-Modal Routing Console -->
+      <div class="dash-card mb-4">
+        <div class="dash-card-header">
+          <div>
+            <h2 class="dash-card-title"><i class="fa-solid fa-boxes-packing"></i> Load Planning, Route Optimization & Lane Dispatch</h2>
+            <p class="text-muted small mb-0 mt-1">Multi-modal load consolidation, weight & cube distribution, intelligent routing, and carrier lane assignment engine.</p>
+          </div>
+          <div class="dash-card-actions">
+            <button class="btn btn-sm btn-primary" onclick="showDashToast('Interactive Load Planning Staging Dialog opened', 'success')"><i class="fa-solid fa-plus me-1"></i> Build New Load</button>
+            <button class="btn btn-sm btn-outline-secondary" onclick="exportDataToast('load-planning')"><i class="fa-solid fa-print me-1"></i> Print Dispatch Manifests</button>
+          </div>
+        </div>
+        <div class="dash-card-body">
+          <!-- Load Planning Quick Status Metrics -->
+          <div class="row g-3 mb-4">
+            <div class="col-6 col-md-3">
+              <div class="p-3 bg-light rounded-3 border">
+                <span class="text-muted small fw-bold">ACTIVE PLANNED LOADS</span>
+                <h3 class="font-heading text-dark my-1">48 Loads</h3>
+                <span class="text-success small fw-bold"><i class="fa-solid fa-check me-1"></i> 32 Dispatched Today</span>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="p-3 bg-light rounded-3 border">
+                <span class="text-muted small fw-bold">ROUTE EFFICIENCY SCORE</span>
+                <h3 class="font-heading text-dark my-1">97.4%</h3>
+                <span class="text-primary small fw-bold"><i class="fa-solid fa-route me-1"></i> AI Dynamic Routing</span>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="p-3 bg-light rounded-3 border">
+                <span class="text-muted small fw-bold">AVG FREIGHT COST / MI</span>
+                <h3 class="font-heading text-dark my-1">$1.82</h3>
+                <span class="text-success small fw-bold">-8.4% Below Spot Market</span>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="p-3 bg-light rounded-3 border">
+                <span class="text-muted small fw-bold">LOAD FACTOR UTILIZATION</span>
+                <h3 class="font-heading text-dark my-1">94.2%</h3>
+                <span class="text-info small fw-bold">High Cube Efficiency</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Route Optimization & Load Building Table -->
+          <div class="table-responsive">
+            <table class="table dash-table table-hover align-middle">
+              <thead>
+                <tr>
+                  <th>Load # & Commodity</th>
+                  <th>Origin & Destination Corridor</th>
+                  <th>Equipment & Capacity</th>
+                  <th>Payload Weight & Cube</th>
+                  <th>Assigned Carrier / Driver</th>
+                  <th>Routing Optimization Status</th>
+                  <th class="text-nowrap text-end">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="dash-table-primary-text">LD-2026-9941</span>
+                    <span class="dash-table-subtext">Precision Solar Inverters & Cells</span>
+                  </td>
+                  <td>
+                    <span class="dash-table-primary-text">Rotterdam Hub &rarr; Newark Port (USA)</span>
+                    <span class="dash-table-subtext">3,850 Nautical Miles • Ocean Linehaul</span>
+                  </td>
+                  <td>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle"><i class="fa-solid fa-ship me-1"></i> 2x 40ft High Cube Container</span>
+                  </td>
+                  <td>
+                    <span class="fw-bold">48,200 KG</span>
+                    <span class="dash-table-subtext">136 CBM (96% Cube Factor)</span>
+                  </td>
+                  <td>
+                    <span class="dash-table-primary-text">Maersk Line (Madrid Express)</span>
+                    <span class="dash-table-subtext">Booking #BL-77192 • Verified</span>
+                  </td>
+                  <td>
+                    <span class="status-badge delivered"><i class="fa-solid fa-circle-check me-1"></i> Route Optimized</span>
+                  </td>
+                  <td class="text-nowrap text-end">
+                    <button class="btn btn-sm btn-outline-primary" onclick="showDashToast('Load LD-2026-9941 manifest downloaded', 'success')"><i class="fa-solid fa-file-invoice me-1"></i> Manifest</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="dash-table-primary-text">LD-2026-9942</span>
+                    <span class="dash-table-subtext">High-Reliability EV Battery Modules</span>
+                  </td>
+                  <td>
+                    <span class="dash-table-primary-text">Chicago Central &rarr; Atlanta Gateway</span>
+                    <span class="dash-table-subtext">510 Miles via I-65 & I-75 Corridor</span>
+                  </td>
+                  <td>
+                    <span class="badge bg-warning-subtle text-warning border border-warning-subtle"><i class="fa-solid fa-truck me-1"></i> 53ft Air-Ride Dry Van (Hazmat Class 9)</span>
+                  </td>
+                  <td>
+                    <span class="fw-bold">39,400 LBS</span>
+                    <span class="dash-table-subtext">2,850 cu ft (Balanced Axle)</span>
+                  </td>
+                  <td>
+                    <span class="dash-table-primary-text">Stackly Road Fleet (TRK-104)</span>
+                    <span class="dash-table-subtext">Marcus Vance (Driver Dispatched)</span>
+                  </td>
+                  <td>
+                    <span class="status-badge in-transit"><i class="fa-solid fa-truck-fast me-1"></i> Linehaul In Transit</span>
+                  </td>
+                  <td class="text-nowrap text-end">
+                    <button class="btn btn-sm btn-outline-primary" onclick="showDashToast('Telemetry GPS link active for LD-2026-9942', 'success')"><i class="fa-solid fa-location-crosshairs me-1"></i> Track</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="dash-table-primary-text">LD-2026-9943</span>
+                    <span class="dash-table-subtext">Cryogenic Bio-Pharmaceutical Vaccines</span>
+                  </td>
+                  <td>
+                    <span class="dash-table-primary-text">Basel Pharma Hub &rarr; London Heathrow</span>
+                    <span class="dash-table-subtext">620 Miles • Eurotunnel Express Lane</span>
+                  </td>
+                  <td>
+                    <span class="badge bg-info-subtle text-info border border-info-subtle"><i class="fa-solid fa-snowflake me-1"></i> Ultra-Cold Reefer (-25°C to -15°C)</span>
+                  </td>
+                  <td>
+                    <span class="fw-bold">8,600 KG</span>
+                    <span class="dash-table-subtext">14 Euro-Pallets Certified</span>
+                  </td>
+                  <td>
+                    <span class="dash-table-primary-text">Stackly Dedicated Cryo Unit #12</span>
+                    <span class="dash-table-subtext">Escorted High-Security Transit</span>
+                  </td>
+                  <td>
+                    <span class="status-badge delivered"><i class="fa-solid fa-temperature-arrow-down me-1"></i> Temp Monitored (SLA 100%)</span>
+                  </td>
+                  <td class="text-nowrap text-end">
+                    <button class="btn btn-sm btn-outline-primary" onclick="showDashToast('Cold-Chain audit telemetry retrieved', 'success')"><i class="fa-solid fa-chart-line me-1"></i> Cold Log</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="dash-table-primary-text">LD-2026-9944</span>
+                    <span class="dash-table-subtext">Aerospace Structural Titanium Castings</span>
+                  </td>
+                  <td>
+                    <span class="dash-table-primary-text">Frankfurt CargoCity &rarr; Chicago O'Hare</span>
+                    <span class="dash-table-subtext">4,320 Miles • Priority Air Transshipment</span>
+                  </td>
+                  <td>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle"><i class="fa-solid fa-plane me-1"></i> Boeing 777-200F Main Deck ULD</span>
+                  </td>
+                  <td>
+                    <span class="fw-bold">14,200 KG</span>
+                    <span class="dash-table-subtext">6x PMC Pallet Contours</span>
+                  </td>
+                  <td>
+                    <span class="dash-table-primary-text">Lufthansa Cargo Flight 824</span>
+                    <span class="dash-table-subtext">Air Waybill #AWB-020-9912</span>
+                  </td>
+                  <td>
+                    <span class="status-badge in-transit"><i class="fa-solid fa-plane-departure me-1"></i> Air Transit Leg 2</span>
+                  </td>
+                  <td class="text-nowrap text-end">
+                    <button class="btn btn-sm btn-outline-primary" onclick="showDashToast('Flight radar synced with LH Cargo 824', 'success')"><i class="fa-solid fa-plane me-1"></i> AWB Log</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="dash-table-primary-text">LD-2026-9945</span>
+                    <span class="dash-table-subtext">Cross-Dock Retail Fast-Moving Consumer Goods</span>
+                  </td>
+                  <td>
+                    <span class="dash-table-primary-text">Indianapolis Hub &rarr; Louisville Center</span>
+                    <span class="dash-table-subtext">115 Miles • Cross-Dock Feeder Run</span>
+                  </td>
+                  <td>
+                    <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle"><i class="fa-solid fa-truck-ramp-box me-1"></i> 48ft Curtainside Feeder</span>
+                  </td>
+                  <td>
+                    <span class="fw-bold">28,500 LBS</span>
+                    <span class="dash-table-subtext">26 Pallet Positions (Staged)</span>
+                  </td>
+                  <td>
+                    <span class="dash-table-primary-text">Swift Transport #SW-891 (3PL)</span>
+                    <span class="dash-table-subtext">Contracted Dedicated Rate</span>
+                  </td>
+                  <td>
+                    <span class="status-badge pending"><i class="fa-solid fa-clock me-1"></i> Dock Door 07 Loading</span>
+                  </td>
+                  <td class="text-nowrap text-end">
+                    <button class="btn btn-sm btn-primary" onclick="showDashToast('Release Load LD-2026-9945 to Carrier Swift', 'success')"><i class="fa-solid fa-arrow-right me-1"></i> Dispatch</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    `;
   }
 
   if (viewId === "coordinator-carriers") {
@@ -2233,7 +2677,7 @@ function getCoordinatorView(viewId) {
   if (viewId === "coordinator-warehouse") {
     return `
       <div class="row g-4">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-xl-6">
           <div class="dash-card">
             <div class="dash-card-header">
               <h2 class="dash-card-title"><i class="fa-solid fa-warehouse"></i> Hub Capacity & Cross-Dock Status</h2>
@@ -2275,7 +2719,7 @@ function getCoordinatorView(viewId) {
           </div>
         </div>
 
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-xl-6">
           <div class="dash-card">
             <div class="dash-card-header">
               <h2 class="dash-card-title"><i class="fa-solid fa-door-open"></i> Live Dock Door Scheduling</h2>
@@ -2498,7 +2942,7 @@ function getAdminView(viewId) {
 
       <!-- Master System User & Role Table -->
       <div class="row g-4">
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-xl-8">
           <div class="dash-card">
             <div class="dash-card-header">
               <h2 class="dash-card-title"><i class="fa-solid fa-users"></i> Recent User Accounts & Role Permissions</h2>
@@ -2574,7 +3018,7 @@ function getAdminView(viewId) {
           </div>
         </div>
 
-        <div class="col-12 col-lg-4">
+        <div class="col-12 col-xl-4">
           <div class="dash-card">
             <div class="dash-card-header">
               <h2 class="dash-card-title"><i class="fa-solid fa-server"></i> System Infrastructure</h2>
@@ -2613,7 +3057,242 @@ function getAdminView(viewId) {
   }
 
   if (viewId === "admin-users") {
-    return getAdminView("admin-overview");
+    return `
+      <!-- User Directory & RBAC Security Console -->
+      <div class="dash-card mb-4">
+        <div class="dash-card-header">
+          <div>
+            <h2 class="dash-card-title"><i class="fa-solid fa-users-gear"></i> Global User Directory & Role-Based Access Control (RBAC)</h2>
+            <p class="text-muted small mb-0 mt-1">Manage 1,248 provisioned corporate accounts, department assignments, security clearance tiers, and Multi-Factor Authentication (MFA) protocols.</p>
+          </div>
+          <div class="dash-card-actions">
+            <button class="btn btn-sm btn-primary" onclick="showDashToast('User Provisioning modal opened', 'success')"><i class="fa-solid fa-user-plus me-1"></i> Invite New User</button>
+            <button class="btn btn-sm btn-outline-secondary" onclick="exportDataToast('user-directory')"><i class="fa-solid fa-download me-1"></i> Export Access Roster</button>
+          </div>
+        </div>
+        <div class="dash-card-body">
+          <!-- Users Summary Metrics -->
+          <div class="row g-3 mb-4">
+            <div class="col-6 col-md-3">
+              <div class="p-3 bg-light rounded-3 border">
+                <span class="text-muted small fw-bold">TOTAL REGISTERED ACCOUNTS</span>
+                <h3 class="font-heading text-dark my-1">1,248</h3>
+                <span class="text-success small fw-bold"><i class="fa-solid fa-circle-check me-1"></i> +38 This Month</span>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="p-3 bg-light rounded-3 border">
+                <span class="text-muted small fw-bold">CONCURRENT LIVE SESSIONS</span>
+                <h3 class="font-heading text-dark my-1">342 Online</h3>
+                <span class="text-primary small fw-bold">Real-Time Telematics Mesh</span>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="p-3 bg-light rounded-3 border">
+                <span class="text-muted small fw-bold">MFA / 2FA ENFORCEMENT</span>
+                <h3 class="font-heading text-dark my-1">100% Active</h3>
+                <span class="text-success small fw-bold">Zero-Trust SOC-2 Type II</span>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="p-3 bg-light rounded-3 border">
+                <span class="text-muted small fw-bold">ROLE-BASED TIERS</span>
+                <h3 class="font-heading text-dark my-1">5 Core Roles</h3>
+                <span class="text-info small fw-bold">RBAC Least-Privilege</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Search & Role Filtering Toolbar -->
+          <div class="dash-toolbar">
+            <div class="dash-search-input-group">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" class="dash-search-input" id="adminUserDirectorySearch" placeholder="Search users by name, email, department, or location..." />
+            </div>
+            <div class="d-flex gap-2 flex-wrap">
+              <select class="dash-filter-select" id="adminRoleFilter">
+                <option value="all">All Roles (Customer, Driver, Fleet, Coordinator, Admin)</option>
+                <option value="admin">Administrator / Command HQ</option>
+                <option value="logistics_coordinator">Logistics Coordinator</option>
+                <option value="fleet_manager">Fleet Manager</option>
+                <option value="driver">Driver / Carrier</option>
+                <option value="customer">Customer / Shipper</option>
+              </select>
+              <select class="dash-filter-select" id="adminStatusFilter">
+                <option value="all">All Account Statuses</option>
+                <option value="active">Active & Verified</option>
+                <option value="on_duty">On Duty</option>
+                <option value="suspended">Suspended / Deactivated</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Master Users & RBAC Table -->
+          <div class="table-responsive">
+            <table class="table dash-table table-hover align-middle">
+              <thead>
+                <tr>
+                  <th>User & Organization</th>
+                  <th>Assigned System Role</th>
+                  <th>Security Clearance Tier</th>
+                  <th>Department & Terminal Base</th>
+                  <th>MFA / 2FA Status</th>
+                  <th>Last Authentication</th>
+                  <th class="text-nowrap text-end">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center gap-2">
+                      <div class="topbar-user-avatar" style="width: 36px; height: 36px; font-size: 0.85rem;">GN</div>
+                      <div>
+                        <span class="dash-table-primary-text">Gokul Nath</span>
+                        <span class="dash-table-subtext">gokul.transport@stackly.com</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle"><i class="fa-solid fa-user-shield me-1"></i> Administrator</span>
+                  </td>
+                  <td>
+                    <span class="badge bg-danger-subtle text-danger border border-danger-subtle fw-bold">Root Level 0 (Full Access)</span>
+                  </td>
+                  <td>Global Infrastructure & Cloud Systems</td>
+                  <td>
+                    <span class="status-badge delivered"><i class="fa-solid fa-key me-1"></i> Hardware FIDO2</span>
+                  </td>
+                  <td>
+                    <span class="dash-table-primary-text">Just now</span>
+                    <span class="dash-table-subtext">IP: 192.168.1.10 (Trusted Device)</span>
+                  </td>
+                  <td class="text-nowrap text-end">
+                    <button class="btn btn-sm btn-outline-primary me-1" title="Edit Permissions" onclick="showDashToast('Viewing permissions for Gokul Nath', 'success')"><i class="fa-solid fa-user-pen"></i></button>
+                    <button class="btn btn-sm btn-outline-secondary" title="Audit User Log" onclick="switchView('admin-logs')"><i class="fa-solid fa-shield-cat"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center gap-2">
+                      <div class="topbar-user-avatar" style="width: 36px; height: 36px; font-size: 0.85rem; background: #ea580c;">MV</div>
+                      <div>
+                        <span class="dash-table-primary-text">Marcus Vance</span>
+                        <span class="dash-table-subtext">marcus.driver@stackly.com</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="badge bg-warning-subtle text-warning border border-warning-subtle"><i class="fa-solid fa-truck-moving me-1"></i> Driver / Carrier</span>
+                  </td>
+                  <td>
+                    <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Mobile Terminal Tier 4</span>
+                  </td>
+                  <td>Over-the-Road Linehaul Fleet (Unit #TRK-104)</td>
+                  <td>
+                    <span class="status-badge delivered"><i class="fa-solid fa-mobile-screen-button me-1"></i> Authenticator App</span>
+                  </td>
+                  <td>
+                    <span class="dash-table-primary-text">12 mins ago</span>
+                    <span class="dash-table-subtext">ELD Tablet (I-65 Milepost 42)</span>
+                  </td>
+                  <td class="text-nowrap text-end">
+                    <button class="btn btn-sm btn-outline-primary me-1" title="Edit Permissions" onclick="showDashToast('Viewing permissions for Marcus Vance', 'success')"><i class="fa-solid fa-user-pen"></i></button>
+                    <button class="btn btn-sm btn-outline-secondary" title="Audit User Log" onclick="switchView('admin-logs')"><i class="fa-solid fa-shield-cat"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center gap-2">
+                      <div class="topbar-user-avatar" style="width: 36px; height: 36px; font-size: 0.85rem; background: #0284c7;">ER</div>
+                      <div>
+                        <span class="dash-table-primary-text">Elena Rostova</span>
+                        <span class="dash-table-subtext">elena.fleet@stackly.com</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="badge bg-info-subtle text-info border border-info-subtle"><i class="fa-solid fa-truck-ramp-box me-1"></i> Fleet Manager</span>
+                  </td>
+                  <td>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle">Operations Manager Tier 2</span>
+                  </td>
+                  <td>European Fleet Depot (Rotterdam Terminal)</td>
+                  <td>
+                    <span class="status-badge delivered"><i class="fa-solid fa-key me-1"></i> WebAuthn 2FA</span>
+                  </td>
+                  <td>
+                    <span class="dash-table-primary-text">25 mins ago</span>
+                    <span class="dash-table-subtext">Rotterdam Workshop Console</span>
+                  </td>
+                  <td class="text-nowrap text-end">
+                    <button class="btn btn-sm btn-outline-primary me-1" title="Edit Permissions" onclick="showDashToast('Viewing permissions for Elena Rostova', 'success')"><i class="fa-solid fa-user-pen"></i></button>
+                    <button class="btn btn-sm btn-outline-secondary" title="Audit User Log" onclick="switchView('admin-logs')"><i class="fa-solid fa-shield-cat"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center gap-2">
+                      <div class="topbar-user-avatar" style="width: 36px; height: 36px; font-size: 0.85rem; background: #16a34a;">DS</div>
+                      <div>
+                        <span class="dash-table-primary-text">David Sterling</span>
+                        <span class="dash-table-subtext">david.coord@stackly.com</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle"><i class="fa-solid fa-network-wired me-1"></i> Logistics Coordinator</span>
+                  </td>
+                  <td>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle">Dispatch Controller Tier 2</span>
+                  </td>
+                  <td>North America Central Dispatch Center (ORD)</td>
+                  <td>
+                    <span class="status-badge delivered"><i class="fa-solid fa-key me-1"></i> WebAuthn 2FA</span>
+                  </td>
+                  <td>
+                    <span class="dash-table-primary-text">1 hour ago</span>
+                    <span class="dash-table-subtext">Chicago Command Desk #4</span>
+                  </td>
+                  <td class="text-nowrap text-end">
+                    <button class="btn btn-sm btn-outline-primary me-1" title="Edit Permissions" onclick="showDashToast('Viewing permissions for David Sterling', 'success')"><i class="fa-solid fa-user-pen"></i></button>
+                    <button class="btn btn-sm btn-outline-secondary" title="Audit User Log" onclick="switchView('admin-logs')"><i class="fa-solid fa-shield-cat"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center gap-2">
+                      <div class="topbar-user-avatar" style="width: 36px; height: 36px; font-size: 0.85rem; background: #475569;">AG</div>
+                      <div>
+                        <span class="dash-table-primary-text">Acme Global Shipper</span>
+                        <span class="dash-table-subtext">shipping@acme-corp.com</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle"><i class="fa-solid fa-user me-1"></i> Customer / Shipper</span>
+                  </td>
+                  <td>
+                    <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Enterprise Shipper Portal Tier 3</span>
+                  </td>
+                  <td>Global Accounts • Solar & Clean Energy Division</td>
+                  <td>
+                    <span class="status-badge delivered"><i class="fa-solid fa-envelope me-1"></i> SSO / SAML 2.0</span>
+                  </td>
+                  <td>
+                    <span class="dash-table-primary-text">2 hours ago</span>
+                    <span class="dash-table-subtext">Okta Enterprise SSO</span>
+                  </td>
+                  <td class="text-nowrap text-end">
+                    <button class="btn btn-sm btn-outline-primary me-1" title="Edit Permissions" onclick="showDashToast('Viewing permissions for Acme Global', 'success')"><i class="fa-solid fa-user-pen"></i></button>
+                    <button class="btn btn-sm btn-outline-secondary" title="Audit User Log" onclick="switchView('admin-logs')"><i class="fa-solid fa-shield-cat"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    `;
   }
 
   if (viewId === "admin-freight") {
@@ -2676,7 +3355,7 @@ function getAdminView(viewId) {
   if (viewId === "admin-financials") {
     return `
       <div class="row g-4">
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-xl-8">
           <div class="dash-card">
             <div class="dash-card-header">
               <h2 class="dash-card-title"><i class="fa-solid fa-money-bill-trend-up"></i> Global Revenue & Carrier Settlement Gateway</h2>
@@ -2711,7 +3390,7 @@ function getAdminView(viewId) {
           </div>
         </div>
 
-        <div class="col-12 col-lg-4">
+        <div class="col-12 col-xl-4">
           <div class="dash-card">
             <div class="dash-card-header">
               <h2 class="dash-card-title"><i class="fa-solid fa-credit-card"></i> Payment Processing</h2>
@@ -2918,11 +3597,17 @@ function markDriverStopComplete(btn, stopName) {
 }
 
 function showConsignmentModal(id) {
-  // Consignment modal handler
+  showDashToast(`Consignment ${id} documentation & BOL retrieved`, "success");
 }
 
 function exportDataToast(type) {
-  // Export handler
+  const formattedType = type
+    ? type.charAt(0).toUpperCase() + type.slice(1)
+    : "Report";
+  showDashToast(
+    `Exporting ${formattedType} records (CSV / XLS format)...`,
+    "success",
+  );
 }
 
 /* --------------------------------------------------------------------------

@@ -37,9 +37,8 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      // Check if key pressed is a single letter (a-z, A-Z) or space
-      // Directly prevent typing of digits (0-9) and any special characters (!@#$%^&* etc.)
-      const isAllowedChar = /^[a-zA-Z\s]$/.test(e.key);
+      // Check if key pressed is a single letter (a-z, A-Z) — spaces are not allowed
+      const isAllowedChar = /^[a-zA-Z]$/.test(e.key);
       if (!isAllowedChar) {
         e.preventDefault();
       }
@@ -48,8 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // 2. Intercept beforeinput (for virtual/mobile keyboards, auto-complete & IME)
     firstNameInput.addEventListener("beforeinput", function (e) {
       if (e.data) {
-        // If data being entered contains anything other than letters or spaces, prevent insertion
-        if (!/^[a-zA-Z\s]+$/.test(e.data)) {
+        // If data being entered contains anything other than letters, prevent insertion
+        if (!/^[a-zA-Z]+$/.test(e.data)) {
           e.preventDefault();
         }
       }
@@ -61,8 +60,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const pasteText = (e.clipboardData || window.clipboardData).getData(
         "text",
       );
-      // Strip everything except letters and spaces
-      const cleanText = pasteText.replace(/[^a-zA-Z\s]/g, "");
+      // Strip everything except letters
+      const cleanText = pasteText.replace(/[^a-zA-Z]/g, "");
 
       const start = this.selectionStart;
       const end = this.selectionEnd;
@@ -79,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // 4. Fail-safe real-time input event sanitizer
     firstNameInput.addEventListener("input", function () {
       const originalVal = this.value;
-      const sanitizedVal = originalVal.replace(/[^a-zA-Z\s]/g, "");
+      const sanitizedVal = originalVal.replace(/[^a-zA-Z]/g, "");
       if (originalVal !== sanitizedVal) {
         this.value = sanitizedVal;
       }
@@ -89,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
     firstNameInput.addEventListener("drop", function (e) {
       e.preventDefault();
       const droppedText = e.dataTransfer.getData("text");
-      const cleanText = droppedText.replace(/[^a-zA-Z\s]/g, "");
+      const cleanText = droppedText.replace(/[^a-zA-Z]/g, "");
       const start = this.selectionStart;
       const end = this.selectionEnd;
       const currentVal = this.value;
